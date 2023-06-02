@@ -1,7 +1,7 @@
+import Navbar from './components/navbar/Navbar'
+import Slider from './components/slider/Slider'
 import './globals.css'
 import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'Create Next App',
@@ -15,7 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className="w-full h-screen bg-[#1f1f1f] relative">
+        <Navbar />
+        <Slider />
+      </body>
     </html>
   )
 }
