@@ -28,3 +28,76 @@ body {
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+
+.slide {
+  /* animation: slideAnimation 1s ease alternate; */
+  transform: scale(1.2);
+  transition: all 1s ease 0s;
+  /* transition: all .2s ease 0s; */
+}
+
+.trending-card {
+  transform: scale(1.2);
+  transition: all .2s ease 0s;
+  transition-delay: .1s;
+}
+
+.active {
+  transform: scale(1);
+}
+
+@keyframes slideAnimation {
+  0% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.show {
+  animation: trending-show 0s forwards;
+  animation-delay: .5s;
+}
+
+@keyframes trending-show {
+  0% {
+    opacity: 0;
+    height: 0;
+  }
+  100% {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+.swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  max-height: 100%;
+  height: 100%;
+  display: flex;
+}
+
+@layer components {
+  .genres {
+    padding: 0 10px;
+    min-width: 40px;
+    text-align: center;
+    line-height: 30px;
+    border-radius: 6px;
+    background: #eee;
+    font-style: normal;
+    font-size: 13px;
+    display: inline-block;
+  }
+}

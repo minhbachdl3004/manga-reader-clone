@@ -34,7 +34,7 @@ const Menu = () => {
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const [isSelected, setIsSelected] = useState<number>(0);
   return (
-    <div className={`h-[40px] my-[15px] float-left ${poppins.className}`}>
+    <div className={`h-[40px] my-[15px] float-left ${poppins.className} max-lg:hidden`}>
       <ul className="list-none block">
         <li className={liStyles}>
           <Link href="/completed" className={linkStyles}>

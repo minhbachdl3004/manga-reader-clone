@@ -7,34 +7,32 @@ type buttonsProps = {
   bgColor: string;
 };
 
-interface contentProps {
+export interface contentProps {
   subText: string;
   title: string;
-  detail: {
-    detailTitle: string;
-    genres: string[];
-  };
+  description: string;
+  genres: string[];
   buttons: buttonsProps[];
 }
 
-const CardContent = ({ subText, title, detail, buttons }: contentProps) => {
+const CardContent = ({ subText, title, description, genres, buttons }: contentProps) => {
   return (
     <div
       className="max-w-[600px] w-full absolute top-[50%] left-[30px] z-[3] text-[#fff] px-[30px]
-    translate-y-[-50%] box-border pointer-events-auto"
+    translate-y-[-50%] pointer-events-auto"
     >
-      <div className="text-[18px] leading-[1.3rem] font-semibold mb-[5px] box-border">
+      <div className="text-[18px] leading-[1.3rem] font-semibold mb-[5px]">
         {subText}
       </div>
       <div className="text-[32px] leading-[1.3] font-semibold mb-[15px] overflow-hidden">
         <Link href="/">{title}</Link>
       </div>
       <div className="text-[1em] block font-normal mb-[30px]">
-        <div className="block mb-[1rem] max-h-[72px] overflow-hidden text-ellipsis">
-          {detail.detailTitle}
+        <div className="block mb-[1rem] text-[14px] max-h-[72px] overflow-hidden text-ellipsis">
+          {description}
         </div>
         <div className="block mb-[10px]">
-          {detail.genres.map((genre, i) => (
+          {genres.map((genre, i) => (
             <span
               key={i}
               className="inline-block mr-[6px] mb-[6px] py-[0.3rem] px-[0.5rem] leading-[1] rounded-[0.2rem] text-[11px]"

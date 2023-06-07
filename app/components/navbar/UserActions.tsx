@@ -2,20 +2,25 @@ import React, { useState } from "react";
 import { MdAccountCircle } from "react-icons/md";
 import { poppins } from "./Menu";
 import Login from "./Login";
+import Signup from "./Signup";
 
 const UserActions = () => {
-  const [showModalLogin, setShowModalLogin] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [switchModal, setSwitchModal] = useState<boolean>(false);
 
-  const handleOpenModalLogin = () => {
+  const handleOpenModal = () => {
     console.log("toggle");
-    setShowModalLogin(true);
+    setShowModal(true);
+  };
+  const handleSwitchModal = () => {
+    setSwitchModal(!switchModal);
   };
   return (
     <>
       <div
         className="float-left box-border"
         role="button"
-        onClick={handleOpenModalLogin}
+        onClick={handleOpenModal}
       >
         <div className="float-left box-border">
           <div
@@ -34,12 +39,19 @@ const UserActions = () => {
           </div>
         </div>
       </div>
-      {showModalLogin ? (
+      {showModal && switchModal ? (
         <Login
-          open={showModalLogin}
-          handleChange={() => setShowModalLogin(!showModalLogin)}
+          open={showModal}
+          handleChange={() => setShowModal(!showModal)}
+          handleSwitch={handleSwitchModal}
         />
-      ) : null}
+      ) : (
+        <Signup
+          open={showModal}
+          handleChange={() => setShowModal(!showModal)}
+          handleSwitch={handleSwitchModal}
+        />
+      )}
     </>
   );
 };

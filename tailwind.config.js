@@ -27,6 +27,7 @@ module.exports = {
       },
       backgroundColor: {
         blur: "rgba(0, 0, 0, 0.5)",
+        trendingSection: "linear-gradient(0deg,#2c2c2c 0,#1f1f1f 100%)",
       },
       transformOrigin: {
         translate3d: "translate3d(0px, 0px, 0px)",

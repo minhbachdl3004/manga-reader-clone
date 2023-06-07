@@ -5,11 +5,12 @@ import Image from "next/image";
 import Menu from "./Menu";
 import Search from "./Search";
 import UserActions from "./UserActions";
+import GiHamburgerMenu from 'react-icons/gi';
 
 const Navbar = () => {
   return (
     <>
-      <div className="bg-[#1f1f1f] text-[#ddd] h-[70px] pt-[10px] px-[20px] mb-[25px]">
+      <div className="bg-[#1f1f1f] text-[#ddd] h-[70px] pt-[10px] px-[20px] mt-[10px] mb-[40px]">
         <div className="relative max-w-[1400px] h-full box-border">
           <Link
             href="/"
