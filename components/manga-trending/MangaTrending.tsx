@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import Header from "./Header";
+import Header from "@/components/common/Header";
 import TrendingList from "./TrendingList";
 
 const MangaTrending = () => {
@@ -11,7 +11,7 @@ const MangaTrending = () => {
     >
       <div className="max-w-[1400px] w-full px-[20px]">
         <section className="block relative">
-          <Header />
+          <Header title="Trending" />
           <TrendingList />
         </section>
       </div>

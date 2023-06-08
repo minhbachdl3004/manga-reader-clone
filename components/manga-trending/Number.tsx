@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { poppins } from "../navbar/Menu";
+import { poppins } from "@/components/navbar/Menu";
 
 const Number = () => {
   return (

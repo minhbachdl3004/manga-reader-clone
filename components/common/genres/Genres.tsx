@@ -50,7 +50,7 @@ const Genres = () => {
           }`}
         >
           <Link
-            href="/"
+            href={`/${item.toLowerCase()}`}
             className="bg-[#2f2f2f] text-[#ddd] genres hover:text-[#c49bff]"
           >
             {item}

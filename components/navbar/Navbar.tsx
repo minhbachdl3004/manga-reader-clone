@@ -5,7 +5,6 @@ import Image from "next/image";
 import Menu from "./Menu";
 import Search from "./Search";
 import UserActions from "./UserActions";
-import GiHamburgerMenu from 'react-icons/gi';
 
 const Navbar = () => {
   return (

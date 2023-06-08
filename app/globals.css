@@ -16,17 +16,19 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-  font-family: apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+  font-family: Poppins, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 14px;
+  line-height: 1.4em;
+  font-weight: 400;
+  text-align: left;
 }
 
 .slide {
@@ -38,8 +40,8 @@ body {
 
 .trending-card {
   transform: scale(1.2);
-  transition: all .2s ease 0s;
-  transition-delay: .1s;
+  transition: all 0.2s ease 0s;
+  transition-delay: 0.1s;
 }
 
 .active {
@@ -63,7 +65,7 @@ body {
 
 .show {
   animation: trending-show 0s forwards;
-  animation-delay: .5s;
+  animation-delay: 0.5s;
 }
 
 @keyframes trending-show {
@@ -99,5 +101,34 @@ body {
     font-style: normal;
     font-size: 13px;
     display: inline-block;
+  }
+  .manga-list__container {
+    padding-bottom: 70px;
+    min-height: calc(100vh - 434px);
+  }
+  
+  .manga-list {
+    display: grid;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1400px;
+    width: 100%;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 20px;
+  }
+
+  .list-items {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 6px;
+    width: 100%;
+  }
+  .latest-manga-detail {
+    width: calc(100% - 160px);
+    float: right;
+    position: relative;
+    min-height: 200px;
+    padding-right: 10px;
+    overflow: hidden;
   }
 }

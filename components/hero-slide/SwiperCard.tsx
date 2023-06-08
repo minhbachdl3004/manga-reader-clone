@@ -3,7 +3,7 @@ import React from "react";
 import CardCover from "./CardCover";
 import CardPoster from "./CardPoster";
 import CardContent from "./CardContent";
-import { poppins } from "../navbar/Menu";
+import { poppins } from "@/components/navbar/Menu";
 
 const buttons = [
   { title: "Read Now", bgColor: "bg-[#ffd702]" },
