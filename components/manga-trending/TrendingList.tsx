@@ -23,7 +23,7 @@ const TrendingList = () => {
               key={i}
               className="w-[201.833px] max-w-[201.833px] mr-[20px] flex-shrink-0 h-full relative"
             >
-              <div className="xl:w-full xl:h-auto xl:pb-[115%] xl:relative xl:inline-block xl:overflow-hidden">
+              <div className="w-full h-auto pb-[115%] relative inline-block overflow-hidden">
                 <MangaCard
                   isDisplay={false}
                   styles="inline-block absolute w-auto left-[40px] right-0 top-0 bottom-0 h-auto overflow-hidden bg-[#eee]"

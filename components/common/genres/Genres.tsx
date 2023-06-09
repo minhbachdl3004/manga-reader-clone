@@ -1,75 +1,30 @@
 "use client";
-import React, { useState } from "react";
+
+import React from "react";
 import Link from "next/link";
 
-const items = [
-  "Action",
-  "Adventure",
-  "Cars",
-  "Comedy",
-  "Dementia",
-  "Demons",
-  "Doujinshi",
-  "Drama",
-  "Ecchi",
-  "Fantasy",
-  "Game",
-  "Gender Bender",
-  "Harem",
-  "Hentai",
-  "Historical",
-  "Horror",
-  "Josei",
-  "Kids",
-  "Magic",
-  "Martial Arts",
-  "Mecha",
-  "Military",
-  "Music",
-  "Mystery",
-  "Parody",
-  "Police",
-  "Romance",
-  "Samurai",
-  "School",
-  "Sci-fi",
-];
+const genres = ["Action", "Adventure"];
 
-const Genres = () => {
-  const [open, setOpen] = useState<boolean>(false);
-  const handleOpen = () => {
-    setOpen(true);
-  };
+interface Props {
+  styles: string;
+  textColor: string;
+}
+
+const Genres = ({ styles, textColor }: Props) => {
   return (
-    <div>
-      {items.map((item, i) => (
-        <div
-          key={i}
-          className={`inline-block float-left mr-[5px] mb-[5px] text-[#ddd]  ${
-            i > 21 && !open ? "hidden" : ""
-          }`}
-        >
+    <div className={`${styles}`}>
+      <span className="text-[13px] text-[#7f7e99]">
+        {genres.map((genre, i) => (
           <Link
-            href={`/${item.toLowerCase()}`}
-            className="bg-[#2f2f2f] text-[#ddd] genres hover:text-[#c49bff]"
-          >
-            {item}
-          </Link>
-        </div>
-      ))}
-      <div
-        className="inline-block float-left mr-[5px] mb-[5px] text-[#ddd]"
-        onClick={handleOpen}
-      >
-        {open ? null : (
-          <Link
+            key={i}
             href="/"
-            className="bg-[#2f2f2f] text-[#ddd] genres hover:text-[#c49bff]"
+            className={`${textColor} hover:text-[#c49bff] font-normal`}
           >
-            + More
+            {genre}
+            {i !== genres.length - 1 ? ", " : ""}
           </Link>
-        )}
-      </div>
+        ))}
+      </span>
     </div>
   );
 };

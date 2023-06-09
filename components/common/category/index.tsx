@@ -1,8 +1,8 @@
 "use client"
 import React from "react";
-import Genres from "@/components/common/genres/Genres";
-import GenresFocus from "@/components/common/genres/GenresFocus";
 import { poppins } from "@/components/navbar/Menu";
+import CategoriesFocus from "@/components/common/category/CategoriesFocus";
+import Categories from "@/components/common/category/Categories";
 
 const Category = () => {
   return (
@@ -10,8 +10,8 @@ const Category = () => {
       <div className="max-w-[1400px] w-full px-[20px] mx-auto">
         <div className="block relative p-0">
           <div className={`${poppins.className}`}>
-            <GenresFocus />
-            <Genres />
+            <CategoriesFocus />
+            <Categories />
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 "use client"
 import React from "react";
-import Header from "@/components/common/Header";
+import { Header } from "@/components/common/heading/Header";
 import TrendingList from "./TrendingList";
 
 const MangaTrending = () => {

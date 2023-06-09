@@ -10,9 +10,7 @@ const Number = () => {
         background: "linear-gradient(0deg,rgba(79,79,79,0) 0,#4f4f4f 100%)",
       }}
     >
-      <span
-        className="absolute bottom-0 top-auto text-[30px] w-[40px] leading-[40px] text-left text-[#fff] z-[9] left-0 -rotate-90 font-bold"
-      >
+      <span className="absolute bottom-0 top-auto text-[30px] w-[40px] leading-[40px] text-left text-[#fff] z-[9] left-0 -rotate-90 font-bold">
         01
       </span>
       <div

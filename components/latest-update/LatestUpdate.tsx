@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import Header from "@/components/common/Header";
-import MangaPoster from "@/components/manga-card/MangaPoster";
+import { Header } from "@/components/common/heading/Header";
+import  { MangaPoster2 } from "@/components/common/MangaPoster";
 import Tick from "@/components/manga-card/Tick";
 import Detail from "./Detail";
 
@@ -19,10 +19,10 @@ const LatestUpdate = () => {
               style={{ width: "calc(100% - 10px)" }}
               key={i}
             >
-              <MangaPoster type={2}>
+              <MangaPoster2 styles="top-[1em] left-[1em] w-[140px] absolute h-auto pb-[200px]">
                 <Tick isDisplay={true} />
-              </MangaPoster>
-              <Detail />
+              </MangaPoster2>
+              <Detail title="Blue Lock" />
             </div>
           ))}
         </div>

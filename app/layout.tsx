@@ -2,9 +2,10 @@ import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
 import HeroSlide from "@/components/hero-slide/HeroSlide";
 import MangaTrending from "@/components/manga-trending/MangaTrending";
-import Category from "@/components/category";
+import Category from "@/components/common/category";
 import RecommendManga from "@/components/recommend-manga/RecommendManga";
 import LatestUpdate from "@/components/latest-update/LatestUpdate";
+import MangaRanking from "@/components/manga-ranking";
 
 export const metadata = {
   title: "MangaReader - Read Manga website",
@@ -31,7 +32,7 @@ export default function RootLayout({
           <div className="manga-list__container">
             <div className="manga-list overflow-hidden">
               <LatestUpdate />
-              {/* <LatestUpdate /> */}
+              <MangaRanking />
             </div>
           </div>
         </div>

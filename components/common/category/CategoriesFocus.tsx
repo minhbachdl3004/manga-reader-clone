@@ -9,7 +9,7 @@ const items = [
   { title: "Completed", icon: "✅", bg: "bg-[#abccd8]" },
 ];
 
-const GenresFocus = () => {
+const CategoriesFocus = () => {
   return (
     <div className="text-[#ddd]">
       <div className="">
@@ -28,4 +28,4 @@ const GenresFocus = () => {
   );
 };
 
-export default GenresFocus;
+export default CategoriesFocus;

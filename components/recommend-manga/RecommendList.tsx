@@ -4,9 +4,12 @@ import React from "react";
 import SwiperCore, { Autoplay } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import MangaCard from "@/components/manga-card/MangaCard";
-import MangaDetail from "@/components/recommend-manga/MangaDetail";
+import Detail from "@/components/common/detail/Detail";
+import { Heading1 } from "@/components/common/heading/Header";
+import Genres from "@/components/common/genres/Genres";
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
 const RecommendList = () => {
   return (
     <div>
@@ -28,10 +31,13 @@ const RecommendList = () => {
                   isDisplay={true}
                   styles="w-full pb-[148%] relative overflow-hidden bg-[#eee]"
                 >
-                  <MangaDetail
-                    title="One Piece"
-                    genres={["Action", "Comedy"]}
-                  />
+                  <Detail styles="py-[10px] px-0 overflow-hidden">
+                    <Heading1
+                      styles="text-[1em] leading-[1.4] overflow-hidden font-semibold mb-[0.5rem]"
+                      title="Blue Lock"
+                    />
+                    <Genres styles="block text-ellipsis whitespace-nowrap overflow-hidden" textColor="text-[#999]" />
+                  </Detail>
                 </MangaCard>
               </div>
             </SwiperSlide>

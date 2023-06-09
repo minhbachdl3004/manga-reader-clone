@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import MangaPoster from "./MangaPoster";
+import { MangaPoster1 } from "@/components/common/MangaPoster";
 import Description from "./Description";
-import { poppins } from "../navbar/Menu";
+import { poppins } from "@/components/navbar/Menu";
 import Tick from "./Tick";
 
 interface Props {
@@ -19,10 +19,10 @@ const MangaCard = ({ isDisplay, styles, children }: Props) => {
       onMouseOut={() => setToggle(false)}
     >
       <div className={` ${styles} ${poppins.className}`}>
-        <MangaPoster>
+        <MangaPoster1 styles="absolute left-0 right-0 bottom-0 top-0 z-[98]">
           <Tick isDisplay={isDisplay} />
           <Description toggle={toggle} />
-        </MangaPoster>
+        </MangaPoster1>
       </div>
       {children}
     </div>
