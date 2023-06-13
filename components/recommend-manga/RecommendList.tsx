@@ -12,8 +12,8 @@ const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 import fetcher from "configs/fetcherConfig";
 import useSWR from "swr";
-import Loading from "app/loading";
 import { mangaProps } from "utils/type";
+import Loading from "./loading";
 
 interface Props {
   mangas: mangaProps;
@@ -36,16 +36,16 @@ const RecommendList = () => {
   return (
     <div>
       <div className="relative">
-        <Swiper
-          modules={[Autoplay]}
-          grabCursor={true}
-          slidesPerView={"auto"}
-          // autoplay={{ delay: 3000 }}
-          className="relative my-0 mx-auto w-full overflow-hidden z-[1]"
-        >
-          {isLoading ? (
-            <Loading />
-          ) : (
+        {isLoading ? (
+          <Loading />
+        ) : (
+          <Swiper
+            modules={[Autoplay]}
+            grabCursor={true}
+            slidesPerView={"auto"}
+            // autoplay={{ delay: 3000 }}
+            className="relative my-0 mx-auto w-full overflow-hidden z-[1]"
+          >
             <>
               {mangas.mangas.map((manga, i) => (
                 <SwiperSlide
@@ -56,6 +56,8 @@ const RecommendList = () => {
                     <MangaCard
                       name={manga.name}
                       poster={manga.poster}
+                      score={manga.moreInfo.Score}
+                      totalChapter={manga.totalChapter.toString()}
                       isDisplay={true}
                       styles="w-full pb-[148%] relative overflow-hidden bg-[#eee]"
                     >
@@ -75,8 +77,8 @@ const RecommendList = () => {
                 </SwiperSlide>
               ))}
             </>
-          )}
-        </Swiper>
+          </Swiper>
+        )}
       </div>
     </div>
   );

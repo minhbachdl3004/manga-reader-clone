@@ -5,44 +5,8 @@ import Link from "next/link";
 import { AiTwotoneStar } from "react-icons/ai";
 import { BsGlobe } from "react-icons/bs";
 import { AiOutlineFileText } from "react-icons/ai";
-import { poppins } from "@/components/navbar/Menu";
 import { FaGlasses } from "react-icons/fa";
 import { FiInfo } from "react-icons/fi";
-
-const components = [
-  {
-    title: "9.14",
-    icon: (
-      <AiTwotoneStar
-        style={{
-          width: "16px",
-          height: "14px",
-          textAlign: "center",
-          fontWeight: 900,
-          display: "inline-block",
-          lineHeight: "1",
-          marginRight: "0.5rem",
-        }}
-      />
-    ),
-  },
-  {
-    title: "EN/FR/JA",
-    icon: (
-      <BsGlobe
-        style={{
-          width: "16px",
-          height: "14px",
-          textAlign: "center",
-          fontWeight: 900,
-          display: "inline-block",
-          lineHeight: "1",
-          marginRight: "0.5rem",
-        }}
-      />
-    ),
-  },
-];
 
 const btns = [
   {
@@ -82,9 +46,11 @@ const btns = [
 interface Props {
   toggle: boolean;
   name: string;
+  score: string;
+  totalChapter: string;
 }
 
-const Description = ({ toggle, name }: Props) => {
+const Description = ({ score, toggle, name, totalChapter }: Props) => {
   return (
     <div
       className={`bg-[#4f4f4f] absolute top-0 right-0 bottom-0 left-0 cursor-grab p-[10px] z-[99] text-[12px] leading-[1.2] overflow-hidden text-ellipsis max-lg:hidden trending-card ${
@@ -94,12 +60,34 @@ const Description = ({ toggle, name }: Props) => {
       <p className={`mb-[10px] whitespace-normal three-lines`}>
         <strong>{name}</strong>
       </p>
-      {components.map((component, i) => (
-        <div className={`flex mb-[4px]`} key={i}>
-          {component.icon}
-          <span>{component.title}</span>
-        </div>
-      ))}
+      <div className={`flex mb-[4px]`}>
+        <AiTwotoneStar
+          style={{
+            width: "16px",
+            height: "14px",
+            textAlign: "center",
+            fontWeight: 900,
+            display: "inline-block",
+            lineHeight: "1",
+            marginRight: "0.5rem",
+          }}
+        />
+        <span>{score}</span>
+      </div>
+      <div className={`flex mb-[4px]`}>
+        <BsGlobe
+          style={{
+            width: "16px",
+            height: "14px",
+            textAlign: "center",
+            fontWeight: 900,
+            display: "inline-block",
+            lineHeight: "1",
+            marginRight: "0.5rem",
+          }}
+        />
+        <span>EN</span>
+      </div>
       <Link
         href="/"
         className={`flex mb-[4px] hover:text-[#c49bff] font-semibold`}
@@ -115,7 +103,7 @@ const Description = ({ toggle, name }: Props) => {
             marginRight: "0.5rem",
           }}
         />
-        <span>Chap 100</span>
+        <span>Chap {totalChapter}</span>
       </Link>
       <div className="absolute bottom-[10px] left-[10px] right-[10px]">
         {btns.map((btn, i) => (

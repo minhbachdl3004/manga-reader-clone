@@ -12,7 +12,7 @@ const Tick = ({ isDisplay }: Props) => {
         isDisplay === true ? "" : "lg:hidden"
       } absolute`}
     >
-      EN/FR/JA
+      EN
     </span>
   );
 };
