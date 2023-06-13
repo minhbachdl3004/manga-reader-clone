@@ -28,9 +28,9 @@ const Detail = ({ title }: Props) => {
           <div
             key={i}
             className="flex items-start text-left text-[0.9em] mb-[5px] px-[2px] py-[5px]"
-            style={{ borderBottom: "1px dashed #464242" }}
+            style={{ borderBottom: "1px solid #4e4a4a" }}
           >
-            <Chapter />
+            <Chapter styles="" />
           </div>
         ))}
       </div>

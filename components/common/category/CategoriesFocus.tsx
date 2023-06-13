@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Link from "next/link";
 
@@ -12,18 +12,16 @@ const items = [
 const CategoriesFocus = () => {
   return (
     <div className="text-[#ddd]">
-      <div className="">
-        {items.map((item, i) => (
-          <Link
-            href="/"
-            key={i}
-            className={`float-left mr-[5px] mb-[5px] text-[#3a3838] hover:text-[#000000] genres ${item.bg}`}
-          >
-            <i className="mr-[0.25rem]">{item.icon}</i>
-            {item.title}
-          </Link>
-        ))}
-      </div>
+      {items.map((item, i) => (
+        <Link
+          href="/"
+          key={i}
+          className={`float-left mr-[5px] mb-[5px] text-[#3a3838] hover:text-[#000000] genres ${item.bg}`}
+        >
+          <i className="mr-[0.25rem]">{item.icon}</i>
+          {item.title}
+        </Link>
+      ))}
     </div>
   );
 };

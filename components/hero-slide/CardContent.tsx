@@ -28,7 +28,7 @@ const CardContent = ({ subText, title, description, genres, buttons }: contentPr
         <Link href="/">{title}</Link>
       </div>
       <div className="text-[1em] block font-normal mb-[30px]">
-        <div className="block mb-[1rem] text-[14px] max-h-[72px] overflow-hidden text-ellipsis">
+        <div className="mb-[1rem] text-[14px] max-h-[72px] three-lines">
           {description}
         </div>
         <div className="block mb-[10px]">

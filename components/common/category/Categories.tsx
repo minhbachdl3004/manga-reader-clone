@@ -41,7 +41,7 @@ const Categories = () => {
     setOpen(true);
   };
   return (
-    <div>
+    <>
       {items.map((item, i) => (
         <div
           key={i}
@@ -62,15 +62,12 @@ const Categories = () => {
         onClick={handleOpen}
       >
         {open ? null : (
-          <Link
-            href="/"
-            className="bg-[#2f2f2f] text-[#ddd] genres hover:text-[#c49bff]"
-          >
+          <a className="bg-[#2f2f2f] text-[#ddd] genres hover:text-[#c49bff] cursor-pointer">
             + More
-          </Link>
+          </a>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

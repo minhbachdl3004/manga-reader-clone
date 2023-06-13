@@ -13,12 +13,14 @@ const CardCover = ({ cardCover }: Props) => {
       href="/"
       className="absolute top-0 left-0 bottom-0 right-0 overflow-hidden opacity-40"
     >
-      <img
+      <Image
         src={cardCover}
         alt=""
+        width={120}
+        height={120}
         className="absolute object-cover w-[120%] h-[120%] top-[-10%] opacity-100"
         style={{ filter: "blur(8px)", WebkitTransition: "all .5s ease 0s" }}
-      ></img>
+      ></Image>
     </Link>
   );
 };

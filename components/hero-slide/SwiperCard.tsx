@@ -17,6 +17,7 @@ interface swiperCardProps {
   title: string;
   description: string;
   genres: string[];
+  totalChapter: number;
 }
 
 const SwiperCard = ({
@@ -26,6 +27,7 @@ const SwiperCard = ({
   title,
   description,
   genres,
+  totalChapter,
 }: swiperCardProps) => {
   return (
     <div
@@ -34,7 +36,7 @@ const SwiperCard = ({
       <CardCover cardCover={cardCover} />
       <CardPoster cardPoster={cardPoster} isActive={isActive} />
       <CardContent
-        subText="Chapter: 7 [EN]"
+        subText={`Chapter: ${totalChapter} [EN]`}
         title={title}
         description={description}
         genres={genres}

@@ -1,11 +1,4 @@
-import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
-import HeroSlide from "@/components/hero-slide/HeroSlide";
-import MangaTrending from "@/components/manga-trending/MangaTrending";
-import Category from "@/components/common/category";
-import RecommendManga from "@/components/recommend-manga/RecommendManga";
-import LatestUpdate from "@/components/latest-update/LatestUpdate";
-import MangaRanking from "@/components/manga-ranking";
 
 export const metadata = {
   title: "MangaReader - Read Manga website",
@@ -23,19 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="w-full h-screen bg-[#1f1f1f] relative">
-        <div className=" w-full relative mx-auto my-0">
-          <Navbar />
-          <HeroSlide />
-          <MangaTrending />
-          <Category />
-          <RecommendManga />
-          <div className="manga-list__container">
-            <div className="manga-list overflow-hidden">
-              <LatestUpdate />
-              <MangaRanking />
-            </div>
-          </div>
-        </div>
+        {children}
       </body>
     </html>
   );

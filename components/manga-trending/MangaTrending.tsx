@@ -3,6 +3,19 @@ import React from "react";
 import { Header } from "@/components/common/heading/Header";
 import TrendingList from "./TrendingList";
 
+import fetcher from "configs/fetcherConfig";
+import useSWR from "swr";
+import { mangaProps } from "utils/type";
+interface Props {
+  mangas: mangaProps;
+  isLoading: any;
+  isError: any;
+}
+
+const GetMangaTreding = () => {
+  const { data, error, isLoading} = useSWR("/manga")
+}
+
 const MangaTrending = () => {
   return (
     <div
