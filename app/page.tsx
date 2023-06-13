@@ -1,5 +1,5 @@
-"use client"
-import React from "react";
+"use client";
+import React, { Suspense } from "react";
 import HeroSlide from "@/components/hero-slide/HeroSlide";
 import MangaTrending from "@/components/manga-trending/MangaTrending";
 import Category from "@/components/common/category";

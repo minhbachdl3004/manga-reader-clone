@@ -1,7 +1,9 @@
 "use client";
 import fetcher from "configs/fetcherConfig";
+import { Suspense } from "react";
 import useSWR from "swr";
 import { mangaProps } from "utils/type";
+import Loading from "./loading";
 
 interface Props {
   mangas: mangaProps;
@@ -25,10 +27,14 @@ export default function Page({ params }: { params: { name: string } }) {
   const { mangas, isLoading, isError }: Props = GetMangaByGenre(params.name);
 
   return (
-    <ul>
-      {mangas && mangas.mangas.map((manga) => (
-        <li key={manga._id}>{manga.name}</li>
-      ))}
-    </ul>
+    <>
+      <ul>
+        {isLoading ? (
+          <Loading />
+        ) : (
+          mangas.mangas.map((manga) => <li key={manga._id}>{manga.name}</li>)
+        )}
+      </ul>
+    </>
   );
 }

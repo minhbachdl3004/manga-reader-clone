@@ -6,9 +6,10 @@ import Image from "next/image";
 interface Props {
   styles: string;
   children?: React.ReactNode;
+  poster: string;
 }
 
-export const MangaPoster1 = ({ styles, children }: Props) => {
+export const MangaPoster1 = ({ styles, children, poster }: Props) => {
   return (
     <>
       <Link
@@ -21,7 +22,7 @@ export const MangaPoster1 = ({ styles, children }: Props) => {
         alt=""
         fill
         className="absolute w-full h-full object-cover top-0 left-0 right-0 bottom-0"
-        src="https://img.mreadercdn.com/_m/300x400/100/9e/b3/9eb352aed77fac4ab19cd3291a4ba58f/9eb352aed77fac4ab19cd3291a4ba58f.jpg"
+        src={poster}
       />
     </>
   );

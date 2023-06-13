@@ -81,17 +81,18 @@ const btns = [
 
 interface Props {
   toggle: boolean;
+  name: string;
 }
 
-const Description = ({ toggle }: Props) => {
+const Description = ({ toggle, name }: Props) => {
   return (
     <div
       className={`bg-[#4f4f4f] absolute top-0 right-0 bottom-0 left-0 cursor-grab p-[10px] z-[99] text-[12px] leading-[1.2] overflow-hidden text-ellipsis max-lg:hidden trending-card ${
         toggle ? "opacity-1 active" : "opacity-0"
       }`}
     >
-      <p className={`mb-[10px] whitespace-normal`}>
-        <strong>One Piece</strong>
+      <p className={`mb-[10px] whitespace-normal three-lines`}>
+        <strong>{name}</strong>
       </p>
       {components.map((component, i) => (
         <div className={`flex mb-[4px]`} key={i}>

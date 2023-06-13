@@ -9,9 +9,11 @@ interface Props {
   isDisplay: boolean;
   styles: string;
   children: React.ReactNode;
+  name: string;
+  poster: string;
 }
 
-const MangaCard = ({ isDisplay, styles, children }: Props) => {
+const MangaCard = ({ isDisplay, styles, children, name, poster }: Props) => {
   const [toggle, setToggle] = useState<boolean>(false);
   return (
     <div
@@ -19,9 +21,9 @@ const MangaCard = ({ isDisplay, styles, children }: Props) => {
       onMouseOut={() => setToggle(false)}
     >
       <div className={` ${styles} ${poppins.className}`}>
-        <MangaPoster1 styles="absolute left-0 right-0 bottom-0 top-0 z-[98]">
+        <MangaPoster1 poster={poster} styles="absolute left-0 right-0 bottom-0 top-0 z-[98]">
           <Tick isDisplay={isDisplay} />
-          <Description toggle={toggle} />
+          <Description name={name} toggle={toggle} />
         </MangaPoster1>
       </div>
       {children}

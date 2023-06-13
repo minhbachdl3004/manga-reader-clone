@@ -30,7 +30,7 @@ const CardPoster = ({ cardPoster, isActive }: Props) => {
           src={cardPoster}
           alt=""
           fill
-          className="absolute w-full h-full object-cover top-0 left-0 right-0 bottom-0eeeeeeeeeeeeeeeeeee"
+          className="absolute w-full h-full object-cover top-0 left-0 right-0 bottom-0"
           style={{
             transition: "all .5s ease 0s",
             verticalAlign: "middle",

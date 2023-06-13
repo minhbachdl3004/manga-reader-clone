@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { Header } from "@/components/common/heading/Header";
 import TrendingList from "./TrendingList";
@@ -10,10 +10,6 @@ interface Props {
   mangas: mangaProps;
   isLoading: any;
   isError: any;
-}
-
-const GetMangaTreding = () => {
-  const { data, error, isLoading} = useSWR("/manga")
 }
 
 const MangaTrending = () => {

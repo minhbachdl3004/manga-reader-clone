@@ -1,27 +1,25 @@
 "use client";
-
 import React from "react";
 import Link from "next/link";
 
-const genres = ["Action", "Adventure"];
-
 interface Props {
+  genres: string[];
   styles: string;
   textColor: string;
 }
 
-const Genres = ({ styles, textColor }: Props) => {
+const Genres = ({ genres, styles, textColor }: Props) => {
   return (
     <div className={`${styles}`}>
       <span className="text-[13px] text-[#7f7e99]">
-        {genres.map((genre, i) => (
+        {genres && genres.slice(0, 2).map((genre, i) => (
           <Link
             key={i}
             href="/"
             className={`${textColor} hover:text-[#c49bff] font-normal`}
           >
             {genre}
-            {i !== genres.length - 1 ? ", " : ""}
+            {i < 1 ? ", " : ""}
           </Link>
         ))}
       </span>
