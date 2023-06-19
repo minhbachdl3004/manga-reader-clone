@@ -1,8 +1,8 @@
 "use client";
-import React from "react";
 import { poppins } from "@/components/navbar/Menu";
-import CategoriesFocus from "@/components/common/category/CategoriesFocus";
-import Categories from "@/components/common/category/Categories";
+import React from "react";
+import CategoriesFocus from "./CategoriesFocus";
+import Categories from "./Categories";
 
 const Category = () => {
   return (

@@ -33,6 +33,13 @@ module.exports = {
         translate3d: "translate3d(0px, 0px, 0px)",
       },
     },
+    screens: {
+      "max-2xl": { max: "1536px" },
+      "max-xl": { max: "1280px" },
+      "max-lg": { max: "1024px" },
+      "max-md": { max: "768px" },
+      "max-sm": { max: "640px" },
+    },
   },
   plugins: [],
 };

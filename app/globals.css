@@ -34,7 +34,7 @@ body {
 .slide {
   /* animation: slideAnimation 1s ease alternate; */
   transform: scale(1.2);
-  transition: all 1s ease 0s;
+  transition: all .5s ease 0s;
   /* transition: all .2s ease 0s; */
 }
 
@@ -140,6 +140,33 @@ body {
     overflow: hidden;
     height: auto;
     padding-bottom: 80px;
+  }
+
+  .search-bar {
+    width: 320px;
+    margin: 0;
+    margin-right: 15px;
+    float: left;
+    color: #ddd;
+  }
+
+  @media screen and (max-width: 1299px) {
+    .search-bar {
+      position: absolute;
+      background-color: #1f1f1f;
+      top: 70px;
+      left: 0;
+      margin: 0;
+      z-index: 99;
+      bottom: auto;
+      width: 100%;
+      padding: 0 0 10px;
+      display: none;
+    }
+  }
+
+  .active-search {
+    display: block;
   }
 }
 

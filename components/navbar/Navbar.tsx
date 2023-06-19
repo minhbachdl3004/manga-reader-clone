@@ -1,16 +1,27 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Menu from "./Menu";
-import Search from "./Search";
+import { MobileSearch, Search } from "./Search";
 import UserActions from "./UserActions";
 
-const Navbar = () => {
+interface Props {
+  styles?: string;
+}
+
+const Navbar = ({ styles }: Props) => {
+  const [activeSearchBar, setActiveSearchBar] = useState<boolean>(false);
+
+  const handleActiveSearchBar = () => {
+    setActiveSearchBar(!activeSearchBar);
+  };
   return (
     <>
-      <div className="bg-[#1f1f1f] text-[#ddd] h-[70px] pt-[10px] px-[20px] mt-[10px] mb-[40px]">
-        <div className="relative max-w-[1400px] h-full box-border">
+      <div
+        className={`${styles} w-full text-[#ddd] h-full px-[20px] mb-[40px]`}
+      >
+        <div className="max-w-[1400px] h-full relative">
           <Link
             href="/"
             className="block h-[50px] my-[10px] mr-[40px] float-left"
@@ -23,9 +34,10 @@ const Navbar = () => {
               className="h-full w-auto float-left"
             />
           </Link>
+          <MobileSearch onChange={handleActiveSearchBar} />
           <Menu />
-          <div className="float-right py-[15px] box-border text-[#ddd]">
-            <Search />
+          <div className="float-right py-[15px] text-[#ddd]">
+            <Search active={activeSearchBar} />
             <UserActions />
           </div>
         </div>

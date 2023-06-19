@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,7 +10,7 @@ interface Props {
 const CardPoster = ({ cardPoster, isActive }: Props) => {
   return (
     <div
-      className={`slide opacity-100 top-[-100px] absolute left-[750px] w-[400px] pointer-events-auto 
+      className={`slide opacity-100 top-[-100px] absolute left-[750px] max-xl:left-[650px] w-[400px] max-xl:w-[350px] pointer-events-auto max-lg:left-[500px] max-md:left-[380px] max-md:w-[300px] max-md:top-[-90px] max-sm:w-[250px] max-sm:left-[280px]
       ${isActive ? "active" : ""}`}
       style={{ transform: `${isActive ? "scale(1)" : "scale(1.2)"}` }}
     >
@@ -20,7 +19,7 @@ const CardPoster = ({ cardPoster, isActive }: Props) => {
         className="inline-block w-full pb-[148%] overflow-hidden bg-[#eee] outline-none"
         style={{
           transform: "rotate(15deg)",
-          transition: "all .5s ease 0s",
+          transition: "all .2s ease 0s",
           WebkitTransition: "all .2s ease 0s",
           boxShadow: "0 30px 30px rgba(0, 0, 0, .2)",
           border: "20px solid #fff",

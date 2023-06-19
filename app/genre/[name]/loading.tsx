@@ -1,23 +1,23 @@
+import CategorySkeletonLoading from "@/components/common/CategoryLoad";
+import LoadingCard from "@/components/common/LoadingCard";
 import React from "react";
 
 const arr = [1, 2, 3, 4, 5, 6, 7, 8];
 const Loading = () => {
   return (
     <div>
-      <p className="text-3xl">Manga</p>
-      <ul className="list-disc pl-6 mt-4 space-y-2">
-        {arr.map((i) => (
-          <li key={i}>
-            <span
-              className="inline-block h-5 animate-pulse w-12 bg-red-400"
-              style={{
-                animationDelay: `${i * 0.05}s`,
-                animationDuration: "1s",
-              }}
-            ></span>
-          </li>
-        ))}
-      </ul>
+      <div className="w-[150px] h-[22px] animate-pulse rounded-full bg-gray-300 dark:bg-gray-500 mx-[20px] mb-[20px]"></div>
+      <div className="flex gap-[14px] max-w-[1400px] px-[20px] pb-[50px]">
+        <div className="max-w-[874px]">
+          <div className="float-left text-3xl pb-[20px] w-full h-[20px] animate-pulse bg-gray-300 dark:bg-gray-500 mb-[10px] rounded-full"></div>
+          <div className="list-items mx-[-7px] max-md:flex max-md:flex-col my-0">
+            {arr.map((item, i) => (
+              <LoadingCard key={i} />
+            ))}
+          </div>
+        </div>
+        <CategorySkeletonLoading />
+      </div>
     </div>
   );
 };

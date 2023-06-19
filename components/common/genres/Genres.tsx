@@ -12,14 +12,14 @@ const Genres = ({ genres, styles, textColor }: Props) => {
   return (
     <div className={`${styles}`}>
       <span className="text-[13px] text-[#7f7e99]">
-        {genres && genres.slice(0, 2).map((genre, i) => (
+        {genres && genres.slice(0, 3).map((genre, i) => (
           <Link
             key={i}
             href="/"
             className={`${textColor} hover:text-[#c49bff] font-normal`}
           >
             {genre}
-            {i < 1 ? ", " : ""}
+            {i < 2 && genres.length > 1 ? ", " : ""}
           </Link>
         ))}
       </span>

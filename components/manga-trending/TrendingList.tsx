@@ -41,8 +41,7 @@ const TrendingList = () => {
             className="relative my-0 w-full overflow-hidden z-[1]"
           >
             <>
-              {mangas &&
-                mangas.mangas.map((manga, i) => (
+              {mangas.mangas.map((manga, i) => (
                   <SwiperSlide
                     key={manga._id}
                     className="w-[201.833px] max-w-[201.833px] mr-[20px] flex-shrink-0 h-full relative"

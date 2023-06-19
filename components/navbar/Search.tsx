@@ -3,9 +3,16 @@ import Link from "next/link";
 import { AiOutlineSearch } from "react-icons/ai";
 import { poppins } from "./Menu";
 
-const Search = () => {
+interface Props {
+  active?: boolean;
+  onChange?: (e: any) => void;
+}
+
+export const Search = ({ active }: Props) => {
   return (
-    <div className="w-[320px] m-0 mr-[15px] float-left box-border text-[#ddd]">
+    <div
+      className={`search-bar ${active ? "active-search" : ""}`}
+    >
       <div className="relative box-border">
         <form action="/search" className="box-border text-[#ddd]">
           <Link
@@ -33,4 +40,15 @@ const Search = () => {
   );
 };
 
-export default Search;
+export const MobileSearch = ({ onChange }: Props) => {
+  return (
+    <div
+      className="left-auto hidden right-[40px] top-[20px] max-xl:inline-block p-0 text-[#fff] cursor-pointer absolute z-[4] w-[26px] h-[26px] text-center rounded-[3px] font-extrabold"
+      onClick={onChange}
+    >
+      <AiOutlineSearch
+        style={{ width: "100%", height: "100%", fontWeight: "900" }}
+      />
+    </div>
+  );
+};

@@ -28,7 +28,7 @@ export const MangaPoster1 = ({ styles, children, poster }: Props) => {
   );
 };
 
-export const MangaPoster2 = ({ styles, children }: Props) => {
+export const MangaPoster2 = ({ poster, styles, children }: Props) => {
   return (
     <>
       <Link
@@ -39,7 +39,7 @@ export const MangaPoster2 = ({ styles, children }: Props) => {
         <Image
           fill
           alt=""
-          src="https://img.mreadercdn.com/_m/300x400/100/c7/72/c7726c763052ec75a107321a954e56cc/c7726c763052ec75a107321a954e56cc.jpg"
+          src={poster}
           className="absolute w-full h-full object-cover top-0 left-0 right-0 bottom-0"
         />
       </Link>
@@ -47,7 +47,7 @@ export const MangaPoster2 = ({ styles, children }: Props) => {
   );
 };
 
-export const MangaPoster3 = ({ styles, children }: Props) => {
+export const MangaPoster3 = ({ poster, styles, children }: Props) => {
   return (
     <>
       <Link
@@ -57,7 +57,7 @@ export const MangaPoster3 = ({ styles, children }: Props) => {
         <Image
           fill
           alt=""
-          src="https://img.mreadercdn.com/_m/300x400/100/c7/72/c7726c763052ec75a107321a954e56cc/c7726c763052ec75a107321a954e56cc.jpg"
+          src={poster}
           className="absolute w-full h-full object-cover top-0 left-0 right-0 bottom-0"
         />
       </Link>

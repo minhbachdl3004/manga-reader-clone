@@ -17,26 +17,22 @@ const UserActions = () => {
   };
   return (
     <>
-      <div
-        className="float-left box-border"
-        role="button"
-        onClick={handleOpenModal}
-      >
-        <div className="float-left box-border">
-          <div
-            className={`h-[40px] leading-[40px] px-[15px] font-normal text-[#fff] inline-block text-center cursor-pointer bg-transparent rounded-[0.25rem] text-[16px] ${poppins.className}`}
-          >
-            <MdAccountCircle
-              style={{
-                display: "inline-block",
-                fontWeight: "900",
-                marginRight: "0.5rem",
-                marginBottom: "5px",
-                fontSize: "20px",
-              }}
-            />
-            {"Member"}
-          </div>
+      <div className="float-left" role="button" onClick={handleOpenModal}>
+        <div
+          className={`h-[40px] leading-[40px] px-[15px] font-normal text-[#fff] inline-block text-center cursor-pointer bg-transparent rounded-[0.25rem] text-[16px] ${poppins.className}
+           max-xl:text-[0px] max-xl:p-0 max-xl:w-[24px] max-xl:h-[24px]`}
+        >
+          <MdAccountCircle
+            style={{
+              display: "inline-block",
+              fontWeight: "900",
+              marginRight: "0.5rem",
+              marginBottom: "5px",
+              width: "26px",
+              height: "26px"
+            }}
+          />
+          {"Member"}
         </div>
       </div>
       {showModal && switchModal ? (

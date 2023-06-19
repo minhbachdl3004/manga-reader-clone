@@ -5,9 +5,10 @@ import { AiOutlineFileText } from "react-icons/ai";
 
 interface Props {
   styles: string;
+  chapterNumber: string;
 }
 
-const Chapter = ({ styles }: Props) => {
+const Chapter = ({ chapterNumber, styles }: Props) => {
   return (
     <div className={`${styles}`}>
       <Link href="/" className="text-[#c49bff]">
@@ -20,7 +21,7 @@ const Chapter = ({ styles }: Props) => {
             fontWeight: 900,
           }}
         />
-        Chap 3
+        {chapterNumber}
       </Link>
     </div>
   );

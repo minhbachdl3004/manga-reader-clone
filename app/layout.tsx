@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="w-full h-screen bg-[#1f1f1f] relative">
-        {children}
+        <div className="w-full relative mx-auto my-0">{children}</div>
       </body>
     </html>
   );

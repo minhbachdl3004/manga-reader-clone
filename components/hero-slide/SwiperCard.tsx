@@ -1,4 +1,3 @@
-"use client";
 import React from "react";
 import CardCover from "./CardCover";
 import CardPoster from "./CardPoster";
@@ -19,6 +18,7 @@ interface swiperCardProps {
   genres: string[];
   totalChapter: number;
 }
+
 
 const SwiperCard = ({
   cardCover,
