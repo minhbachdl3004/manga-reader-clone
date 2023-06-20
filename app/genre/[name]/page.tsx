@@ -10,7 +10,6 @@ import { homepageUrl } from "utils/urlConfig";
 import { MangaProps } from "utils/type";
 
 
-
 export async function generateMetadata({
   params,
 }: {

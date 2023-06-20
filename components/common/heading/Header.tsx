@@ -6,6 +6,7 @@ interface Props {
   link?: string;
   styles?: string;
   title: string;
+  textColor?: string;
 }
 
 export const Header = ({ styles, title }: Props) => {
@@ -20,7 +21,7 @@ export const Header = ({ styles, title }: Props) => {
   );
 };
 
-export const Heading1 = ({ styles, title }: Props) => {
+export const Heading1 = ({ textColor="", styles, title }: Props) => {
   return (
     <h3
       className={`${styles}`}
@@ -32,7 +33,7 @@ export const Heading1 = ({ styles, title }: Props) => {
     >
       <Link
         href="/"
-        className="text-[#ddd] relative w-full outline-none bg-transparent font-semibold hover:text-[#c49bff] overflow-hidden text-ellipsis whitespace-nowrap"
+        className={`${textColor !== "" ? textColor : "text-[#ddd]"} relative w-full outline-none bg-transparent font-semibold hover:text-[#c49bff] overflow-hidden text-ellipsis whitespace-nowrap`}
       >
         {title}
       </Link>

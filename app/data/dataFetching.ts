@@ -1,7 +1,7 @@
 import { mangaProps } from "utils/type";
 import { apiUrl } from "utils/urlConfig";
 
-export const getMangas = async (params : string) => {
+export const getMangas = async (params: string) => {
   const res = await fetch(`${apiUrl}${params}`);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -14,4 +14,5 @@ export const getMangas = async (params : string) => {
 
   return res.json();
 };
+
 
