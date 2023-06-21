@@ -6,7 +6,7 @@ export default function Layout({
 }) {
   return (
     <>
-      <div className="w-full h-[80px] mb-[20px] bg-[#7b36ce]">
+      <div className="w-full h-[80px] bg-[#7b36ce]">
         <Navbar styles="py-[5px]" />
       </div>
       {children}

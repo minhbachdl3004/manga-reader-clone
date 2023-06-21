@@ -10,18 +10,15 @@ import Genres from "@/components/common/genres/Genres";
 import Chapter from "@/components/common/chapter/Chapter";
 import { MangaProps, PromiseProps, mangaProps } from "utils/type";
 
-interface Props {
-  mangas: mangaProps;
-  isLoading: any;
-  isError: any;
-}
 
 const MangaRanking = ({ mangas }: any) => {
   const [selectedId, setSelectedId] = useState<number>(0);
   const handleChange = (id: number) => {
     setSelectedId(id);
   };
+  
   // const manga = await promise;
+  console.log(mangas);
   return (
     <section className="mb-[30px] ml-[20px] max-xl:ml-0 block relative">
       <Header title="Most Viewed" />
@@ -46,6 +43,7 @@ const MangaRanking = ({ mangas }: any) => {
                     <Heading2
                       styles="text-[15px] text-[#ddd] max-w-[320px] font-semibold leading-[1.4em] mb-[5px] overflow-hidden"
                       title={manga.name}
+                      link={manga.name.toLowerCase().replace(/\s/g, '-').replace(/[^a-zA-Z0-9-]/g, '') + `-${manga.mangaId}`}
                     />
                     <div className="text-[.9em] text-[#ddd] whitespace-normal overflow-hidden text-ellipsis">
                       <span>EN</span>

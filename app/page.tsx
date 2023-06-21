@@ -17,7 +17,7 @@ export default async function Home() {
 
   //Wait for the Carosel Poster Manga to resolve first
   const data = await posterManga;
-  const recommendData = await recommendManga;
+  const recommendMangaData = await recommendManga;
 
   return (
     <>
@@ -38,7 +38,7 @@ export default async function Home() {
             <LatestUpdate promise={latestManga} />
           </Suspense>
           <Suspense>
-            <MangaRanking mangas={recommendData} />
+            <MangaRanking mangas={recommendMangaData} />
           </Suspense>
         </div>
       </div>

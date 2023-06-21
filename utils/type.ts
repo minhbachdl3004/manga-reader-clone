@@ -21,3 +21,10 @@ export interface mangaProps {
 export interface PromiseProps {
   promise: Promise<mangaProps>
 }
+
+export interface chapterProps {
+  _id: string;
+  chapterId: string;
+  chapterName: string;
+  images: string[]
+}

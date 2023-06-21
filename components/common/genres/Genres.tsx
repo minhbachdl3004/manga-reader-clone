@@ -32,7 +32,7 @@ const Genres = ({ type = 2, genres, styles, textColor }: Props) => {
               genres.slice(0, 3).map((genre, i) => (
                 <Link
                   key={i}
-                  href="/"
+                  href={`/genre/${genre.toLowerCase()}`}
                   className={`${textColor} hover:text-[#c49bff] font-normal`}
                 >
                   {genre}

@@ -42,6 +42,7 @@ const RecommendManga = async ({ promise }: PromiseProps) => {
                           <Heading2
                             styles="relative max-w-[206px] leading-[1.4] overflow-hidden font-semibold mb-[0.5rem] text-[#ddd] text-[14px]"
                             title={manga.name}
+                            link={manga.name.toLowerCase().replaceAll(" ", "-") + `-${manga.mangaId}`}
                           />
                           <Genres
                             styles="block text-ellipsis whitespace-nowrap overflow-hidden"

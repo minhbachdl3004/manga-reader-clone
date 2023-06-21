@@ -12,7 +12,6 @@ const CardPoster = ({ cardPoster, isActive }: Props) => {
     <div
       className={`slide opacity-100 top-[-100px] absolute left-[750px] max-xl:left-[650px] w-[400px] max-xl:w-[350px] pointer-events-auto max-lg:left-[500px] max-md:left-[380px] max-md:w-[300px] max-md:top-[-90px] max-sm:w-[250px] max-sm:left-[280px]
       ${isActive ? "active" : ""}`}
-      style={{ transform: `${isActive ? "scale(1)" : "scale(1.2)"}` }}
     >
       <Link
         href="/"
@@ -23,6 +22,7 @@ const CardPoster = ({ cardPoster, isActive }: Props) => {
           WebkitTransition: "all .2s ease 0s",
           boxShadow: "0 30px 30px rgba(0, 0, 0, .2)",
           border: "20px solid #fff",
+          display: `${isActive ? "" : "none"}`
         }}
       >
         <Image
