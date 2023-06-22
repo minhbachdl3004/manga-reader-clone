@@ -51,8 +51,8 @@ export default async function Page({
   const chapterId = params.id;
   const { manga } = await getMangaByMangaIdAndChapterId(mangaId, chapterId);
   return (
-    <div className="max-w-[1400px] w-full overflow-hidden bg-[#1f1f1f]">
-      <div className="max-w-[1400px] px-[20px] flex justify-center items-center">
+    <div className="max-w-[1400px] w-full overflow-auto flex bg-[#1f1f1f]">
+      <div className="max-w-[1400px] w-full px-[20px] flex justify-center items-center">
         <div
           className="pt-[100px] flex flex-col"
           style={{ transformOrigin: "top" }}
@@ -60,13 +60,20 @@ export default async function Page({
           {manga.chapters[0].images.map((image: any, i: number) => (
             <div
               key={image}
-              className="block w-full mt-0 mx-auto mb-[20px] min-h-[200px] relative"
+              className="block w-full mt-0 mx-auto min-h-[200px] relative"
             >
+              <div>
+                <div className="c-1-area">
+                  <div className="paper-loading"></div>
+                  <p>Loading...</p>
+                </div>
+              </div>
               <Image
                 alt=""
                 src={image}
-                width={1000}
+                width={800}
                 height={200}
+                loading="lazy"
                 className="inline-block max-w-full h-auto relative z-[2] object-cover"
               ></Image>
             </div>

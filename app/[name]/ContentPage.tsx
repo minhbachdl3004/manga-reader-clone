@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Heading1 } from "@/components/common/heading/Header";
 import Link from "next/link";
@@ -19,6 +19,32 @@ interface Props {
 
 const PageContent = ({ manga }: Props) => {
   const [isHover, setIsHover] = useState<boolean>(false);
+  const [isHoverChapter, setIsHoverChapter] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState("");
+  const [highlightedChapter, setHighlightedChapter] = useState<string | null>(
+    null
+  );
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
+    setInputValue(event.target.value);
+    setHighlightedChapter(event.target.value);
+  }
+
+  useEffect(() => {
+    const container = containerRef.current;
+    const chapterElement = container?.querySelector<HTMLDivElement>(
+      `[data-number="${inputValue}"]`
+    );
+
+    if (container && chapterElement) {
+      container.scrollTo({
+        top: chapterElement.offsetTop,
+        behavior: "smooth",
+      });
+    }
+  }, [inputValue]);
+
   return (
     <div className={`${poppins.className}`}>
       <div className={`w-screen bg-[#2f2f2f] px-[20px] mt-[-25px]`}>
@@ -139,16 +165,24 @@ const PageContent = ({ manga }: Props) => {
                   <input
                     type="text"
                     className="bg-[#5f5f5f] w-full pl-[35px] rounded-[4px] outline-none border-none p-[6px] text-[14px]"
+                    value={inputValue}
+                    onChange={handleInputChange}
                     placeholder="Number of chapter"
                   />
                 </form>
               </div>
             </div>
-            <div className="max-h-[490px] m-0 overflow-x-hidden overflow-y-auto">
+            <div
+              ref={containerRef}
+              className="max-h-[490px] m-0 overflow-x-hidden overflow-y-auto"
+            >
               {manga.chapters.map((chapter: chapterProps) => (
                 <div
-                  key={chapter.chapterId}
-                  className="block w-full mr-[1px] text-[12px]"
+                  key={chapter._id}
+                  data-number={chapter.chapterId.split(" ")[1]}
+                  className="block w-full mr-[1px] text-[12px] border-bottom-black"
+                  onMouseOut={() => setIsHoverChapter(false)}
+                  onMouseOver={() => setIsHoverChapter(true)}
                 >
                   <Link
                     href={`/read/${
@@ -157,12 +191,21 @@ const PageContent = ({ manga }: Props) => {
                         .replace(/\s/g, "-")
                         .replace(/[^a-zA-Z0-9-]/g, "") + `-${manga.mangaId}`
                     }/${chapter._id}`}
-                    className="bg-[#2f2f2f] text-[#ddd] px-[15px] py-[10px] relative flex justify-between"
+                    className={`bg-[#2f2f2f] text-[#ddd] px-[15px] py-[10px] relative flex justify-between ${
+                      highlightedChapter === chapter.chapterId.split(" ")[1]
+                        ? "chapter-highlight" : isHoverChapter ? "hover:text-[#c49bff]"
+                        : ""
+                    }`}
                   >
                     <span className="font-medium text-[13px] max-w-full block text-ellipsis overflow-hidden whitespace-nowrap mt-[5px]">
                       {chapter.chapterId}: {chapter.chapterName}
                     </span>
-                    <span className="bg-[#3f3f3f] px-[10px] text-[#999] text-[13px] rounded-[0.3rem] py-[0.25rem]">
+                    <span
+                      className={`bg-[#3f3f3f] px-[10px] text-[#999] text-[13px] rounded-[0.3rem] py-[0.25rem] ${
+                        highlightedChapter === chapter.chapterId.split(" ")[1]
+                          ? "bg-[#5f25a6] text-[#fff]" : ""
+                      }`}
+                    >
                       <IconContext.Provider value={{}}>
                         <FaGlasses className="inline-block mr-[0.5rem] mb-[2px]" />
                       </IconContext.Provider>
