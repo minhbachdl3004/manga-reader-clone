@@ -4,7 +4,7 @@ const arr = [1, 2, 3, 4, 5, 6];
 
 const Loading = () => {
   return (
-    <div className="flex">
+    <div className="flex my-[40px]">
       {arr.map((i) => (
         <div
           key={i}

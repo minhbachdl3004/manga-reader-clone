@@ -11,8 +11,8 @@ import MangaRanking from "@/components/manga-ranking";
 
 export default async function Home() {
   const posterManga = getMangas("/manga/poster");
-  const recommendManga = getMangas("/manga/recommend");
-  const trendingManga = getMangas("/manga/trending");
+  const recommendManga = getMangas("/manga/recommended");
+  const trendingManga = getMangas("/manga/trending-manga");
   const latestManga = getMangas("/manga/get-all?page=1");
 
   //Wait for the Carosel Poster Manga to resolve first

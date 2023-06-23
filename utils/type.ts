@@ -1,5 +1,4 @@
 export interface MangaProps {
-  mangas: any;
   _id: string;
   name: string;
   otherName: string;
@@ -16,6 +15,10 @@ export interface MangaProps {
 export interface mangaProps {
   mangas: MangaProps[];
   pagination?: {};
+}
+
+export interface specificMangaProps {
+  manga: MangaProps
 }
 
 export interface PromiseProps {

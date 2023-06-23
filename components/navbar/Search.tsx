@@ -1,7 +1,10 @@
-import React from "react";
+"use client";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import Link from "next/link";
 import { AiOutlineSearch } from "react-icons/ai";
 import { poppins } from "./Menu";
+import { useRouter, useSearchParams } from "next/navigation";
+import { createUrl } from "utils/createUrl";
 
 interface Props {
   active?: boolean;
@@ -9,12 +12,32 @@ interface Props {
 }
 
 export const Search = ({ active }: Props) => {
+  const router = useRouter()
+  const searchParams = useSearchParams();
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleSearch = (event: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(event.target.value);
+  }
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const newParams = new URLSearchParams(searchParams.toString())
+
+    if (inputValue) {
+      newParams.set('q', inputValue)
+    } else {
+      newParams.delete('q')
+    }
+
+    router.push(createUrl("/search", newParams))
+  }
   return (
     <div
       className={`search-bar ${active ? "active-search" : ""}`}
     >
       <div className="relative box-border">
-        <form action="/search" className="box-border text-[#ddd]">
+        <form action="/search" onSubmit={onSubmit} className="box-border text-[#ddd]">
           <Link
             href="/filter"
             className="h-[26px] cursor-pointer leading-[26px] text-[11px] bg-[#e9daff] text-[#5f25a6] px-[6px] rounded-[6px] absolute left-[7px] top-[7px] z-3 hover:bg-[#5f25a6] hover:text-[#fff]"
@@ -25,6 +48,8 @@ export const Search = ({ active }: Props) => {
             type="text"
             className={`relative w-full h-[40px] text-[#111] pr-[40px] pl-[60px] text-[13px] font-normal bg-[#fff] rounded-[8px] border-none shadow-input outline-none ${poppins.className} }`}
             placeholder="Search manga..."
+            defaultValue={searchParams?.get('q') || ''}
+            onChange={handleSearch}
           />
           <button
             type="submit"

@@ -7,6 +7,7 @@ import { Autoplay } from "swiper";
 import MangaCard from "@/components/manga-card/MangaCard";
 import Detail from "@/components/common/detail/Detail";
 import Genres from "@/components/common/genres/Genres";
+import { linkManga } from "app/data/dataFetching";
 
 const RecommendManga = async ({ promise }: PromiseProps) => {
   const manga = await promise;
@@ -31,6 +32,7 @@ const RecommendManga = async ({ promise }: PromiseProps) => {
                   >
                     <div>
                       <MangaCard
+                        link={linkManga(manga.name, manga.mangaId)}
                         name={manga.name}
                         poster={manga.poster}
                         score={manga.moreInfo.Score}

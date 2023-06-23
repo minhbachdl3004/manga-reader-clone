@@ -13,9 +13,10 @@ interface Props {
   poster: string;
   score: string;
   totalChapter: string;
+  link?: string;
 }
 
-const MangaCard = ({ isDisplay, styles, children, name, poster, score, totalChapter }: Props) => {
+const MangaCard = ({ link, isDisplay, styles, children, name, poster, score, totalChapter }: Props) => {
   const [toggle, setToggle] = useState<boolean>(false);
   return (
     <div
@@ -25,7 +26,7 @@ const MangaCard = ({ isDisplay, styles, children, name, poster, score, totalChap
       <div className={` ${styles} ${poppins.className}`}>
         <MangaPoster1 poster={poster} styles="absolute left-0 right-0 bottom-0 top-0 z-[98]">
           <Tick isDisplay={isDisplay} />
-          <Description name={name} score={score} totalChapter={totalChapter} toggle={toggle} />
+          <Description link={link} name={name} score={score} totalChapter={totalChapter} toggle={toggle} />
         </MangaPoster1>
       </div>
       {children}

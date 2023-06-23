@@ -48,9 +48,10 @@ interface Props {
   name: string;
   score: string;
   totalChapter: string;
+  link?: string;
 }
 
-const Description = ({ score, toggle, name, totalChapter }: Props) => {
+const Description = ({ link, score, toggle, name, totalChapter }: Props) => {
   return (
     <div
       className={`bg-[#4f4f4f] absolute top-0 right-0 bottom-0 left-0 cursor-grab p-[10px] z-[99] text-[12px] leading-[1.2] overflow-hidden text-ellipsis max-lg:hidden trending-card ${
@@ -89,7 +90,7 @@ const Description = ({ score, toggle, name, totalChapter }: Props) => {
         <span>EN</span>
       </div>
       <Link
-        href="/"
+        href={link ? link : ""}
         className={`flex mb-[4px] hover:text-[#c49bff] font-semibold`}
       >
         <AiOutlineFileText
@@ -109,7 +110,7 @@ const Description = ({ score, toggle, name, totalChapter }: Props) => {
         {btns.map((btn, i) => (
           <Link
             key={i}
-            href="/"
+            href={link ? link : ""}
             className={`text-[12.6px] p-[0.4rem] mt-[0.5rem] ${
               i === 0 ? "bg-[#ffd702] text-[#111]" : "bg-[#2f2f2f] text-[#ddd]"
             } font-medium shadow-none outline-none border-none block w-full leading-[1.5] rounded-[0.2rem] text-center cursor-pointer`}

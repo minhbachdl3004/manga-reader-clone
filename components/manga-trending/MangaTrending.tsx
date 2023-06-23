@@ -6,6 +6,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper";
 import MangaCard from "@/components/manga-card/MangaCard";
 import Number from "./Number";
+import { linkManga } from "app/data/dataFetching";
 
 const MangaTrending = async ({ promise }: PromiseProps) => {
   const manga = await promise;
@@ -38,6 +39,7 @@ const MangaTrending = async ({ promise }: PromiseProps) => {
                           name={manga.name}
                           poster={manga.poster}
                           score={manga.moreInfo.Score}
+                          link={linkManga(manga.name, manga.mangaId)}
                           totalChapter={manga.totalChapter.toString()}
                           isDisplay={false}
                           styles="inline-block absolute w-auto left-[40px] right-0 top-0 bottom-0 h-auto overflow-hidden bg-[#eee]"

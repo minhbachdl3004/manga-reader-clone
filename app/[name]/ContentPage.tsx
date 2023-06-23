@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Heading1 } from "@/components/common/heading/Header";
 import Link from "next/link";
@@ -32,17 +32,16 @@ const PageContent = ({ manga }: Props) => {
   }
 
   useEffect(() => {
-    const container = containerRef.current;
-    const chapterElement = container?.querySelector<HTMLDivElement>(
-      `[data-number="${inputValue}"]`
-    );
-
-    if (container && chapterElement) {
-      container.scrollTo({
-        top: chapterElement.offsetTop,
-        behavior: "smooth",
-      });
-    }
+      const chapter = containerRef.current?.querySelector<HTMLElement>(`[data-number="${inputValue}"]`);
+      const container = containerRef.current;
+      if (chapter && container) {
+        const offsetTop = chapter.offsetTop;
+        const containerHeight = container.clientHeight;
+        const chapterHeight = chapter.clientHeight;
+        if (offsetTop < container.scrollTop || offsetTop + chapterHeight > container.scrollTop + containerHeight) {
+          container.scrollTo({ top: offsetTop - (containerHeight - chapterHeight) / 2, behavior: 'smooth' });
+        }
+      }
   }, [inputValue]);
 
   return (
@@ -190,7 +189,7 @@ const PageContent = ({ manga }: Props) => {
                         .toLowerCase()
                         .replace(/\s/g, "-")
                         .replace(/[^a-zA-Z0-9-]/g, "") + `-${manga.mangaId}`
-                    }/${chapter._id}`}
+                    }/${chapter.chapterId.toLowerCase().replace(" ", "-")}`}
                     className={`bg-[#2f2f2f] text-[#ddd] px-[15px] py-[10px] relative flex justify-between ${
                       highlightedChapter === chapter.chapterId.split(" ")[1]
                         ? "chapter-highlight" : isHoverChapter ? "hover:text-[#c49bff]"
