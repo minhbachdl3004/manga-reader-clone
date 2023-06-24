@@ -1,14 +1,8 @@
 import type { Metadata } from "next";
-import Category from "@/components/common/category";
-import { Header } from "@/components/common/heading/Header";
-import BreadCrumb from "@/components/common/BreadCrumb";
 import Error from "./error";
-import { MangaPoster2 } from "@/components/common/MangaPoster";
-import Detail from "@/components/common/Detail";
-import Tick from "@/components/manga-card/Tick";
-import { homepageUrl } from "utils/urlConfig";
-import { MangaProps } from "utils/type";
 import MangaScreen from "@/components/MangaScreen";
+import { notFound } from "next/navigation";
+import { apiUrl } from "utils/urlConfig";
 
 
 export async function generateMetadata({
@@ -29,14 +23,8 @@ export async function generateMetadata({
 }
 
 async function getMangaByGenre(name: string) {
-  // try {
-  //   const res = await axiosInstance(`manga/genre/${name}?page=1`);
-  //   return res.data;
-  // } catch (error) {
-  //   return error;
-  // }
   const res = await fetch(
-    `http://localhost:8080/api/manga/genre/${name}?page=1`
+    `${apiUrl}/manga/genre/${name}?page=1`
   );
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.

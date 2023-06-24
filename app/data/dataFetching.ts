@@ -2,7 +2,10 @@ import { mangaProps } from "utils/type";
 import { apiUrl } from "utils/urlConfig";
 
 export const getMangas = async (params: string) => {
-  const res = await fetch(`${apiUrl}${params}`);
+  const res = await fetch(`${apiUrl}${params}`, {
+    next: { revalidate: 10 },
+    cache: "no-store",
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -15,15 +18,11 @@ export const getMangas = async (params: string) => {
   return res.json();
 };
 
-
 export async function getMangaById(mangaId: string) {
-  // try {
-  //   const res = await axiosInstance(`manga/genre/${name}?page=1`);
-  //   return res.data;
-  // } catch (error) {
-  //   return error;
-  // }
-  const res = await fetch(`http://localhost:8080/api/manga/mangaId/${mangaId}`);
+  const res = await fetch(`${apiUrl}/manga/mangaId/${mangaId}`, {
+    next: { revalidate: 10 },
+    cache: "no-store",
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -36,14 +35,11 @@ export async function getMangaById(mangaId: string) {
   return res.json();
 }
 
-export async function searchManga(query : string) {
-  // try {
-  //   const res = await axiosInstance(`manga/genre/${name}?page=1`);
-  //   return res.data;
-  // } catch (error) {
-  //   return error;
-  // }
-  const res = await fetch(`${apiUrl}/manga/name/search?name=${query}&page=1`);
+export async function searchManga(query: string) {
+  const res = await fetch(`${apiUrl}/manga/name/search?name=${query}&page=1`, {
+    next: { revalidate: 10 },
+    cache: "no-store",
+  });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -56,8 +52,7 @@ export async function searchManga(query : string) {
   return res.json();
 }
 
-
-export const linkManga = (mangaName : string, mangaId : any) => {
+export const linkManga = (mangaName: string, mangaId: any) => {
   return `/${
     mangaName
       .toLowerCase()

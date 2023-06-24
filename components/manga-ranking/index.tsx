@@ -16,9 +16,6 @@ const MangaRanking = ({ mangas }: any) => {
   const handleChange = (id: number) => {
     setSelectedId(id);
   };
-  
-  // const manga = await promise;
-  console.log(mangas);
   return (
     <section className="mb-[30px] ml-[20px] max-xl:ml-0 block relative">
       <Header title="Most Viewed" />

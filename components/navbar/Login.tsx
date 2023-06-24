@@ -1,6 +1,4 @@
 import React from "react";
-import { poppins } from "./Menu";
-import Input from "./Input";
 import Form from "./Form";
 
 interface Props {

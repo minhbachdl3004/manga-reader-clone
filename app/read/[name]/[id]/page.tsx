@@ -1,24 +1,9 @@
 import React from "react";
-import { notFound } from "next/navigation";
-import { Metadata } from "next";
 import { apiUrl } from "utils/urlConfig";
 import { MangaProps, chapterProps, specificMangaProps } from "utils/type";
 import Image from "next/image";
-import { getMangaById } from "app/data/dataFetching";
-
-async function getMangaByMangaId(mangaId: string, chapterId: string) {
-  const res = await fetch(`${apiUrl}/manga/search?mangaId=${mangaId}`);
-  // The return value is *not* serialized
-  // You can return Date, Map, Set, etc.
-
-  // Recommendation: handle errors
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    return undefined;
-  }
-
-  return res.json();
-}
+import { getMangaById, linkManga } from "app/data/dataFetching";
+import Header from "./Header";
 
 export default async function Page({
   params,
@@ -28,18 +13,22 @@ export default async function Page({
   const nameArr = params.name.split("-");
   const mangaId = nameArr[nameArr.length - 1];
   const chapterId = params.id.replace("-", " ");
+  const currentChapter = "Chapter " + chapterId.split(" ")[1];
   const { manga }: specificMangaProps = await getMangaById(mangaId);
   const chapter: chapterProps[] = manga.chapters.filter(
     (chapter: chapterProps) => chapter.chapterId.toLowerCase() === chapterId
   );
 
   return (
-    <div className="max-w-[1400px] w-full overflow-auto flex bg-[#1f1f1f]">
-      <div className="max-w-[1400px] w-full px-[20px] flex justify-center items-center">
-        <div
-          className="pt-[100px] flex flex-col"
-          style={{ transformOrigin: "top" }}
-        >
+    <div className="max-w-[1400px] w-full overflow-auto flex flex-col bg-[#141414]">
+      <Header
+        name={manga.name}
+        link={linkManga(manga.name, manga.mangaId)}
+        chapters={manga.chapters}
+        currentChapter={currentChapter}
+      />
+      <div className="pt-[100px] max-w-[1400px] w-full px-[20px] flex justify-center items-center">
+        <div className="flex flex-col" style={{ transformOrigin: "top" }}>
           {!chapter
             ? null
             : chapter[0].images.map((image: any, i: number) => (

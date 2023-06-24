@@ -3,9 +3,8 @@ import { MangaPoster2 } from "@/components/common/MangaPoster";
 import Tick from "@/components/manga-card/Tick";
 import Detail from "@/components/common/Detail";
 import { Header } from "@/components/common/heading/Header";
-import { mangaProps } from "utils/type";
 import Loading from "@/components/recommend-manga/loading";
-import { MangaProps } from "app/genre/[name]/page";
+import { MangaProps, mangaProps } from "utils/type";
 
 interface Props {
   mangas: mangaProps;

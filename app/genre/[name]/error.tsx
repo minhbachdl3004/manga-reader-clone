@@ -2,7 +2,6 @@
 
 import { poppins } from "@/components/navbar/Menu";
 import Image from "next/image";
-import { useEffect } from "react";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 import { useRouter } from 'next/navigation'
 

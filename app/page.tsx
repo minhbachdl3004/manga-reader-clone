@@ -10,8 +10,8 @@ import LatestUpdate from "@/components/latest-update/LatestUpdate";
 import MangaRanking from "@/components/manga-ranking";
 
 export default async function Home() {
-  const posterManga = getMangas("/manga/poster");
-  const recommendManga = getMangas("/manga/recommended");
+  const posterManga = getMangas("/manga/poster-manga");
+  const recommendManga = getMangas("/manga/recommended-manga");
   const trendingManga = getMangas("/manga/trending-manga");
   const latestManga = getMangas("/manga/get-all?page=1");
 
