@@ -1,10 +1,8 @@
-import { mangaProps } from "utils/type";
 import { apiUrl } from "utils/urlConfig";
 
 export const getMangas = async (params: string) => {
   const res = await fetch(`${apiUrl}${params}`, {
-    next: { revalidate: 10 },
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -20,8 +18,7 @@ export const getMangas = async (params: string) => {
 
 export async function getMangaById(mangaId: string) {
   const res = await fetch(`${apiUrl}/manga/mangaId/${mangaId}`, {
-    next: { revalidate: 10 },
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
@@ -37,8 +34,7 @@ export async function getMangaById(mangaId: string) {
 
 export async function searchManga(query: string) {
   const res = await fetch(`${apiUrl}/manga/name/search?name=${query}&page=1`, {
-    next: { revalidate: 10 },
-    cache: "no-store",
+    next: { revalidate: 60 },
   });
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
