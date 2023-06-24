@@ -7,9 +7,6 @@ import { poppins } from "@/components/navbar/Menu";
 import { IoIosArrowDown } from "react-icons/io";
 import { ImArrowRight2, ImArrowLeft2 } from "react-icons/im";
 import { IconContext } from "react-icons";
-import { chapterProps } from "utils/type";
-import { linkManga } from "app/data/dataFetching";
-import { homepageUrl } from "utils/urlConfig";
 
 interface Props {
   link: string;

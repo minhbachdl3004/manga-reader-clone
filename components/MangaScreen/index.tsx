@@ -6,8 +6,8 @@ import BreadCrumb from "@/components/common/BreadCrumb";
 import { MangaPoster2 } from "@/components/common/MangaPoster";
 import Detail from "@/components/common/Detail";
 import Tick from "@/components/manga-card/Tick";
-import { homepageUrl } from "utils/urlConfig";
 import { MangaProps, mangaProps } from "utils/type";
+import { linkManga } from "app/data/dataFetching";
 
 interface Props {
   searchPage?: boolean;
@@ -42,11 +42,7 @@ const MangaScreen = ({ query, searchPage = false, newName, mangas, type }: Props
                     name={manga.name}
                     genres={manga.genres}
                     latestChapters={manga.chapters.slice(0, 3)}
-                    link={
-                      `${homepageUrl}/` +
-                      manga.name.toLowerCase().replaceAll(" ", "-") +
-                      `-${manga.mangaId}`
-                    }
+                    link={linkManga(manga.name, manga.mangaId)}
                   />
                 </div>
               ))}

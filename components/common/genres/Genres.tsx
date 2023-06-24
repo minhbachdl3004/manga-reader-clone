@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import Link from "next/link";
-import { apiUrl, homepageUrl } from "utils/urlConfig";
-
 interface Props {
   genres: string[];
   styles: string;
