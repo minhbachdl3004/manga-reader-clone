@@ -46,10 +46,10 @@ const PageContent = ({ manga }: Props) => {
 
   return (
     <div className={`${poppins.className}`}>
-      <div className={`w-screen bg-[#2f2f2f] px-[20px] mt-[-25px]`}>
-        <div className={`py-[60px] relative flex ${poppins.className}`}>
+      <div className={`w-screen bg-[#2f2f2f] px-[20px]`}>
+        <div className={`py-[60px] relative flex ${poppins.className} max-lg:w-full max-lg:flex-col`}>
           <div
-            className="min-w-[180px] h-[270px] relative rounded-[10px] mr-[30px]"
+            className="min-w-[180px] h-[270px] relative rounded-[10px] mr-[30px] max-lg:relative max-lg:top-auto max-lg:left-auto max-lg:right-auto max-lg:z-[9] max-lg:mx-auto max-lg:mb-[15px] max-xl:w-[140px]"
             style={{ border: "3px solid #fff" }}
           >
             <Image
@@ -59,21 +59,16 @@ const PageContent = ({ manga }: Props) => {
               className="object-cover"
             ></Image>
           </div>
-          <div className="flex w-full min-h-[300px] pt-[5px]">
-            <div className="flex flex-col gap-[15px] w-[70%] mr-[20px]">
-              <Heading1
-                title={manga.name}
-                link=""
-                styles="text-[28px] text-[#fff] mb-[5px]"
-                textColor="text-[#fff]"
-              />
+          <div className="flex w-full min-h-[300px] pt-[5px] max-lg:text-center max-lg:flex-col max-lg:items-center">
+            <div className="flex flex-col gap-[15px] w-[70%] max-lg:w-full mr-[20px] max-lg:mr-0">
+              <h3 className="overflow-hidden text-ellipsis whitespace-nowrap text-[28px] text-[#fff] font-semibold">{manga.name}</h3>
               <Heading1
                 title={manga.otherName}
                 link=""
-                styles="text-[16px] mb-[10px]"
+                styles="text-[16px] mb-[10px] max-lg:mb-0"
                 textColor="text-[#999]"
               />
-              <div className="flex gap-[10px] mb-[10px]">
+              <div className="flex gap-[10px] max-lg:justify-center max-lg:items-center mb-[10px]">
                 <Link
                   href=""
                   className="flex justify-center items-center leading-[42px] px-[1.2rem] rounded-[0.4rem] bg-[#ffd702] text-[#111] text-[16px] font-medium cursor-pointer hover:bg-[#f5df18]"
@@ -103,17 +98,17 @@ const PageContent = ({ manga }: Props) => {
                   </IconContext.Provider>
                 </Link>
               </div>
-              <Genres genres={manga.genres} type={1} styles="" textColor="" />
+              <Genres genres={manga.genres} type={1} styles="float-left" textColor="" />
               <div
-                className={`three-lines text-[#fff] text-[13px] max-w-[624px]`}
+                className={`three-lines text-[#fff] text-[13px] max-w-[624px] max-lg:text-left`}
               >
                 {manga.description}
               </div>
             </div>
-            <div className="flex flex-col gap-[5px] px-[20px] ml-[20px] w-[50%]">
+            <div className="flex flex-col gap-[5px] max-lg:justify-self-start px-[20px] ml-[20px] w-[50%] max-lg:w-full max-lg:ml-0 max-lg:px-0 max-lg:my-[20px]">
               {Object.entries(manga.moreInfo).map(([key, value]) => {
                 return (
-                  <div key={key}>
+                  <div key={key} className="max-lg:text-left">
                     <span className="text-[#fff] font-semibold mr-[5px] text-[.9em]">
                       {key}:
                     </span>
@@ -131,8 +126,8 @@ const PageContent = ({ manga }: Props) => {
           </div>
         </div>
       </div>
-      <div className="flex w-full gap-[15px] relative overflow-hidden px-[15px] py-[10px] mt-[20px] mb-[40px]">
-        <div className="w-2/3 flex flex-col pr-[20px]">
+      <div className="flex w-full gap-[15px] relative overflow-hidden px-[15px] py-[10px] mt-[20px] mb-[40px] max-lg:flex-col">
+        <div className="w-2/3 flex flex-col max-lg:w-full max-lg:pr-0 pr-[20px]">
           <div className="block w-full">
             <div className="" style={{ borderBottom: "5px solid #5f25a6" }}>
               <Link
@@ -143,15 +138,15 @@ const PageContent = ({ manga }: Props) => {
               </Link>
             </div>
           </div>
-          <div className="block w-full">
+          <div className="w-full flex flex-col">
             <div
-              className="bg-[#3f3f3f] w-full text-[#ddd] p-[10px] z-[100] relative h-[52px]"
+              className="bg-[#3f3f3f] w-full text-[#ddd] p-[10px] z-[100] relative max-lg:flex max-lg:flex-col max-lg:gap-[10px]"
               style={{ boxShadow: "0 10px 10px rgba(0, 0, 0, .05" }}
             >
-              <div className="relative float-left py-[6px] pl-[5px] text-[14px] text-[#ddd]">
+              <div className="max-lg:w-full relative float-left py-[6px] pl-[5px] text-[14px] text-[#ddd]">
                 Language: EN
               </div>
-              <div className="float-right w-[200px] relative">
+              <div className="max-lg:w-full float-right w-[200px] relative">
                 <form action="" className="flex justify-center items-center">
                   <AiOutlineSearch
                     style={{
@@ -216,7 +211,10 @@ const PageContent = ({ manga }: Props) => {
             </div>
           </div>
         </div>
-        <div className="w-1/3">
+        <div className="w-1/3 max-lg:w-full max-lg:px-0">
+          <div className="flex justify-start items-center pb-[20px]">
+            <h3 className="text-[#fff] text-[24px]">Genres</h3>
+          </div>
           <Category />
         </div>
       </div>

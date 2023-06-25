@@ -17,14 +17,24 @@ interface Props {
   query?: string;
 }
 
-const MangaScreen = ({ query, searchPage = false, newName, mangas, type }: Props) => {
+const MangaScreen = ({
+  query,
+  searchPage = false,
+  newName,
+  mangas,
+  type,
+}: Props) => {
   return (
     <ul>
       <BreadCrumb searchPage={searchPage} name={newName} type={type} />
       <div className="manga-list gap-[10px] overflow-hidden max-xl:flex max-xl:flex-col max-xl:gap-0">
         <div className="w-full float-left mb-[40px] max-xl:mb-0 overflow-hidden">
           <section className="block mb-[40px] relative">
-            <Header title={`${searchPage ? `Search result for: ${query}` : `${newName} Manga` }`} />
+            <Header
+              title={`${
+                searchPage ? `Search result for: ${query}` : `${newName} Manga`
+              }`}
+            />
             <div className="my-0 mx-[-7px] list-items max-md:flex max-md:flex-col">
               {mangas.mangas.map((manga: MangaProps) => (
                 <div
@@ -51,7 +61,9 @@ const MangaScreen = ({ query, searchPage = false, newName, mangas, type }: Props
         </div>
         <div className="">
           <Header title="Genres" styles="ml-[20px]" />
-          <Category />
+          <div className="px-[20px]">
+            <Category />
+          </div>
         </div>
       </div>
     </ul>

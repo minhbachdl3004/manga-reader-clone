@@ -56,20 +56,22 @@ const Header = ({ link, name, chapters, currentChapter }: Props) => {
           className="h-full w-auto float-left"
         />
       </Link>
-      <div className="hr-line"></div>
+      <div className="hr-line max-lg:hidden"></div>
       <Link
         href={link}
-        className="float-left h-[70px] w-[200px] relative hr-manga"
+        className="float-left h-[70px] w-[200px] relative hr-manga max-lg:hidden"
       >
         <h2 className="manga-name">{name}</h2>
       </Link>
-      <div className="hr-navigation">
+      <div className="hr-navigation max-md:absolute max-md:left-[80px] max-md:right-[120px] max-md:bg-[#222] max-md:w-full max-md:text-left max-sm:left-0 ">
         {title.map((title, i) => (
           <div
             key={i}
-            className="float-left h-[30px] leading-[30px] relative mr-[5px] bg-[#333] flex justify-center items-center p-[15px] text-[13px] text-[#fff] font-medium rounded-[4px]"
+            className="float-left h-[30px] leading-[30px] relative mr-[5px] bg-[#333] flex justify-center items-center p-[15px] text-[13px] text-[#fff] font-medium rounded-[4px] "
           >
-            {title.title}
+            <div className="w-full relative max-lg:text-[12px] max-lg:p-[5px]">
+              {title.title}
+            </div>
           </div>
         ))}
         <div
@@ -92,7 +94,7 @@ const Header = ({ link, name, chapters, currentChapter }: Props) => {
             showChapterList ? "block" : "hidden"
           }`}
         >
-          <div className="grid grid-cols-4 gap-[5px] px-[5px]">
+          <div className="grid grid-cols-4 max-md:grid-cols-3 gap-[5px] px-[5px]">
             {chapters &&
               chapters.map((chapter: any, i: number) => (
                 <Link
@@ -100,9 +102,11 @@ const Header = ({ link, name, chapters, currentChapter }: Props) => {
                     .toLowerCase()
                     .replace(" ", "-")}`}
                   key={i}
-                  className="p-[15px] max-h-[36px] flex justify-start items-center  rounded-[4px] bg-[#2f2f2f] hover:text-[#c49bff] text-[12px]"
+                  className="relative overflow-hidden"
                 >
-                  {chapter.chapterId}: {chapter.chapterName}
+                  <div className="px-[15px] pt-[8px] max-w-full h-[36px] rounded-[4px] bg-[#2f2f2f] hover:text-[#c49bff] text-[#ddd] text-[12px] text-ellipsis overflow-hidden whitespace-nowrap">
+                    {chapter.chapterId}: {chapter.chapterName}
+                  </div>
                 </Link>
               ))}
           </div>

@@ -28,7 +28,9 @@ export default async function Home() {
       <Suspense fallback={<Loading />}>
         <MangaTrending promise={trendingManga} />
       </Suspense>
-      <Category />
+      <div className="px-[20px]">
+        <Category />
+      </div>
       <Suspense fallback={<Loading />}>
         <RecommendManga promise={recommendManga} />
       </Suspense>

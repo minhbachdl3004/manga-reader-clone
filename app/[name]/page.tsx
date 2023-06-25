@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: { name: string } }) {
   const data = await getMangaById(mangaId);
 
   return (
-    <div className="max-w-[1400px] w-full overflow-hidden bg-[#1f1f1f]">
+    <div className="max-w-[1400px] w-full overflow-hidden bg-[#1f1f1f] max-xl:mt-[-25px] max-xl:z-[999]">
       <PageContent manga={data.manga} />
     </div>
   );

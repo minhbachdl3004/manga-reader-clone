@@ -23,10 +23,10 @@
 }
 
 .hr-navigation {
-  float: left;
-  margin: 20px 0px 20px 20px;
   display: flex;
-  gap: 5px;
+  height: 70px;
+  justify-content: start;
+  align-items: center;
 }
 
 .dropdown-menu-fixed {
