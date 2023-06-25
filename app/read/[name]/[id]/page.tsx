@@ -22,6 +22,7 @@ export default async function Page({
   return (
     <div className="max-w-[1400px] w-full overflow-auto flex flex-col bg-[#141414]">
       <Header
+        currentChapterId={chapter[0]._id}
         name={manga.name}
         link={linkManga(manga.name, manga.mangaId)}
         chapters={manga.chapters}

@@ -5,6 +5,7 @@ import Detail from "@/components/common/Detail";
 import { Header } from "@/components/common/heading/Header";
 import Loading from "@/components/recommend-manga/loading";
 import { MangaProps, mangaProps } from "utils/type";
+import { linkManga } from "app/data/dataFetching";
 
 interface Props {
   mangas: mangaProps;
@@ -31,6 +32,7 @@ const MangaGrid = ({ isLoading, isError, mangas, title, genre }: Props) => {
                 key={manga._id}
               >
                 <MangaPoster2
+                  link={linkManga(manga.name, manga.mangaId) || "/"}
                   poster={manga.poster}
                   styles="top-[1em] left-[1em] w-[140px] absolute h-auto pb-[200px]"
                 >
@@ -40,7 +42,7 @@ const MangaGrid = ({ isLoading, isError, mangas, title, genre }: Props) => {
                   name={manga.name}
                   genres={manga.genres}
                   latestChapters={manga.chapters.slice(0, 3)}
-                  link={manga.name.toLowerCase().replaceAll(" ", "-") + `-${manga.mangaId}`}
+                  link={linkManga(manga.name, manga.mangaId) || "/"}
                 />
               </div>
             ))}

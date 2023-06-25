@@ -13,18 +13,18 @@ interface Props {
   name: string;
   currentChapter: string;
   chapters: any;
+  currentChapterId: string;
 }
+const buttonStyles =
+  "float-left leading-[30px] relative mr-[5px] bg-[#333] py-[5px] px-[10px] max-sm:p-[5px] text-[13px] text-[#fff] font-medium rounded-[4px] max-sm:text-[12px] max-sm:px-[15px]";
 
-const title = [
-  {
-    title: "Reading",
-  },
-  {
-    title: "Language [EN]",
-  },
-];
-
-const Header = ({ link, name, chapters, currentChapter }: Props) => {
+const Header = ({
+  currentChapterId,
+  link,
+  name,
+  chapters,
+  currentChapter,
+}: Props) => {
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [showChapterList, setShowChapterList] = useState<boolean>(false);
 
@@ -63,23 +63,18 @@ const Header = ({ link, name, chapters, currentChapter }: Props) => {
       >
         <h2 className="manga-name">{name}</h2>
       </Link>
-      <div className="hr-navigation max-md:absolute max-md:left-[80px] max-md:right-[120px] max-md:bg-[#222] max-md:w-full max-md:text-left max-sm:left-0 ">
-        {title.map((title, i) => (
-          <div
-            key={i}
-            className="float-left h-[30px] leading-[30px] relative mr-[5px] bg-[#333] flex justify-center items-center p-[15px] text-[13px] text-[#fff] font-medium rounded-[4px] "
-          >
-            <div className="w-full relative max-lg:text-[12px] max-lg:p-[5px]">
-              {title.title}
-            </div>
-          </div>
-        ))}
+      <div className="hr-navigation px-[50px] overflow-hidden max-md:absolute max-md:left-[80px] max-md:right-[120px] max-md:bg-[#222] max-md:w-full max-md:text-left max-sm:px-[20px]">
+        <div className={`${buttonStyles}`}>Reading</div>
+        <div className={`${buttonStyles} max-sm:px-[10px]`}>
+          <span className="max-sm:hidden">Language: </span>
+          EN
+        </div>
         <div
           className={`${
             showChapterList
               ? "bg-[#ffd702] text-[#111]"
               : "bg-[#333] text-[#fff]"
-          } float-left h-[30px] leading-[30px] relative mr-[5px] flex justify-center items-center p-[15px] text-[13px] font-medium rounded-[4px] gap-[5px] relative"
+          } float-left leading-[30px] relative mr-[5px] py-[5px] px-[10px] flex justify-center items-center text-[13px] font-medium rounded-[4px] gap-[5px] max-sm:text-[12px]"
           `}
           role="button"
           onClick={() => setShowChapterList(!showChapterList)}
@@ -89,27 +84,33 @@ const Header = ({ link, name, chapters, currentChapter }: Props) => {
             <IoIosArrowDown className="pb-[3px] font-bold text-[18px]" />
           </IconContext.Provider>
         </div>
-        <div
-          className={`dropdown-menu dropdown-menu-model dropdown-menu-fixed overflow-auto pb-[10px] ${
-            showChapterList ? "block" : "hidden"
-          }`}
-        >
-          <div className="grid grid-cols-4 max-md:grid-cols-3 gap-[5px] px-[5px]">
-            {chapters &&
-              chapters.map((chapter: any, i: number) => (
-                <Link
-                  href={`/read${link}/${chapter.chapterId
-                    .toLowerCase()
-                    .replace(" ", "-")}`}
-                  key={i}
-                  className="relative overflow-hidden"
+      </div>
+      <div
+        className={`dropdown-menu dropdown-menu-model dropdown-menu-fixed overflow-auto pb-[10px] ${
+          showChapterList ? "block" : "hidden"
+        }`}
+      >
+        <div className="grid grid-cols-4 max-md:grid-cols-3 gap-[5px] px-[5px]">
+          {chapters &&
+            chapters.map((chapter: any, i: number) => (
+              <Link
+                href={`/read${link}/${chapter.chapterId
+                  .toLowerCase()
+                  .replace(" ", "-")}`}
+                key={i}
+                className="relative overflow-hidden"
+              >
+                <div
+                  className={`px-[15px] pt-[8px] max-w-full h-[36px] rounded-[4px]  hover:text-[#c49bff]  text-[12px] text-ellipsis overflow-hidden whitespace-nowrap ${
+                    currentChapterId === chapter._id
+                      ? "bg-[#5f25a6] text-[#fff]"
+                      : "bg-[#2f2f2f] text-[#ddd]"
+                  } font-medium`}
                 >
-                  <div className="px-[15px] pt-[8px] max-w-full h-[36px] rounded-[4px] bg-[#2f2f2f] hover:text-[#c49bff] text-[#ddd] text-[12px] text-ellipsis overflow-hidden whitespace-nowrap">
-                    {chapter.chapterId}: {chapter.chapterName}
-                  </div>
-                </Link>
-              ))}
-          </div>
+                  {chapter.chapterId}: {chapter.chapterName}
+                </div>
+              </Link>
+            ))}
         </div>
       </div>
     </div>

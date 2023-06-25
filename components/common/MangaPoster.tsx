@@ -7,13 +7,14 @@ interface Props {
   styles: string;
   children?: React.ReactNode;
   poster: string;
+  link?: string;
 }
 
-export const MangaPoster1 = ({ styles, children, poster }: Props) => {
+export const MangaPoster1 = ({ link, styles, children, poster }: Props) => {
   return (
     <>
       <Link
-        href="/"
+        href={link ? link : ""}
         className={`${styles}`}
       />
 
@@ -28,11 +29,11 @@ export const MangaPoster1 = ({ styles, children, poster }: Props) => {
   );
 };
 
-export const MangaPoster2 = ({ poster, styles, children }: Props) => {
+export const MangaPoster2 = ({ link, poster, styles, children }: Props) => {
   return (
     <>
       <Link
-        href="/"
+        href={link ? link : ""}
         className={`${styles}`}
       >
         {children}
@@ -47,11 +48,11 @@ export const MangaPoster2 = ({ poster, styles, children }: Props) => {
   );
 };
 
-export const MangaPoster3 = ({ poster, styles, children }: Props) => {
+export const MangaPoster3 = ({ link, poster, styles, children }: Props) => {
   return (
     <>
       <Link
-        href="/"
+        href={link ? link : ""}
         className={`${styles}`}
       >
         <Image

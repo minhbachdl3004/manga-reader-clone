@@ -45,7 +45,7 @@ export const Heading2 = ({ link="", styles, title }: Props) => {
   return (
     <h3 className={`${styles}`}>
       <Link
-        href={link}
+        href={link ? link : ""}
         className="block overflow-hidden text-ellipsis whitespace-nowrap hover:text-[#c49bff]"
       >
         {title}

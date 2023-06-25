@@ -9,6 +9,7 @@ import Detail from "@/components/common/detail/Detail";
 import Genres from "@/components/common/genres/Genres";
 import Chapter from "@/components/common/chapter/Chapter";
 import { MangaProps, PromiseProps, mangaProps } from "utils/type";
+import { linkManga } from "app/data/dataFetching";
 
 
 const MangaRanking = ({ mangas }: any) => {
@@ -33,6 +34,7 @@ const MangaRanking = ({ mangas }: any) => {
                 >
                   <RankingNumber number={(i + 1).toString()} />
                   <MangaPoster3
+                    link={linkManga(manga.name, manga.mangaId)}
                     poster={manga.poster}
                     styles="poster-most-viewed"
                   ></MangaPoster3>
@@ -40,7 +42,7 @@ const MangaRanking = ({ mangas }: any) => {
                     <Heading2
                       styles="text-[15px] text-[#ddd] max-w-[320px] font-semibold leading-[1.4em] mb-[5px] overflow-hidden"
                       title={manga.name}
-                      link={manga.name.toLowerCase().replace(/\s/g, '-').replace(/[^a-zA-Z0-9-]/g, '') + `-${manga.mangaId}`}
+                      link={linkManga(manga.name, manga.mangaId)}
                     />
                     <div className="text-[.9em] text-[#ddd] whitespace-normal overflow-hidden text-ellipsis">
                       <span>EN</span>
