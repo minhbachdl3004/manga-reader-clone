@@ -16,7 +16,7 @@
 }
 
 .focus {
-  display: block!important;
+  display: block !important;
 }
 
 .loader div {
@@ -39,7 +39,6 @@
   @apply bg-[#c49bff] flex space-x-2 p-[6px] rounded-full justify-center items-center animate-pulse;
 }
 
-
 .dot-pulse {
   position: relative;
   left: -9999px;
@@ -52,7 +51,8 @@
   animation: dot-pulse 1.5s infinite linear;
   animation-delay: 0.25s;
 }
-.dot-pulse::before, .dot-pulse::after {
+.dot-pulse::before,
+.dot-pulse::after {
   content: "";
   display: inline-block;
   position: absolute;
@@ -81,7 +81,8 @@
   30% {
     box-shadow: 9984px 0 0 2px;
   }
-  60%, 100% {
+  60%,
+  100% {
     box-shadow: 9984px 0 0 -5px;
   }
 }
@@ -92,7 +93,8 @@
   30% {
     box-shadow: 9999px 0 0 2px;
   }
-  60%, 100% {
+  60%,
+  100% {
     box-shadow: 9999px 0 0 -5px;
   }
 }
@@ -103,11 +105,39 @@
   30% {
     box-shadow: 10014px 0 0 2px;
   }
-  60%, 100% {
+  60%,
+  100% {
     box-shadow: 10014px 0 0 -5px;
   }
 }
 
 .small-dot {
-  @apply w-[4px] h-[4px] rounded-[50%] bg-[#666] inline-block my-[3px] mx-[6px]
+  @apply w-[4px] h-[4px] rounded-[50%] bg-[#666] inline-block my-[3px] mx-[6px];
+}
+
+.search-bar {
+  width: 320px;
+  margin: 0;
+  margin-right: 15px;
+  float: left;
+  color: #ddd;
+}
+
+@media screen and (max-width: 1024px) {
+  .search-bar {
+    position: absolute;
+    background-color: #1f1f1f;
+    top: 70px;
+    left: 0;
+    margin: 0;
+    z-index: 99;
+    bottom: auto;
+    width: 100%;
+    padding: 20px 20px 10px;
+    display: none;
+  }
+}
+
+.active-search {
+  display: block;
 }

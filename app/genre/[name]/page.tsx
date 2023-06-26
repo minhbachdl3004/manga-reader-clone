@@ -3,6 +3,7 @@ import Error from "./error";
 import MangaScreen from "@/components/MangaScreen";
 import { notFound } from "next/navigation";
 import { apiUrl } from "utils/urlConfig";
+import Loading from "./loading";
 
 
 export async function generateMetadata({

@@ -18,7 +18,7 @@ const MangaTrending = async ({ promise }: PromiseProps) => {
     >
       <div className="max-w-[1400px] w-full px-[20px] max-xl:px-0">
         <section className="block relative">
-          <Header title="Trending" />
+          <Header styles="max-xl:px-[10px]" title="Trending" />
           <div className="block_area-content">
             <div className="relative mb-[10px] px-0 h-0 opacity-0 show">
               <Swiper
@@ -26,7 +26,7 @@ const MangaTrending = async ({ promise }: PromiseProps) => {
                 grabCursor={true}
                 slidesPerView={"auto"}
                 // autoplay={{ delay: 3000 }}
-                className="relative my-0 w-full overflow-hidden z-[1]"
+                className="relative my-0 w-full overflow-hidden z-[1] max-xl:px-[10px]"
               >
                 <>
                   {manga.mangas.map((manga, i) => (

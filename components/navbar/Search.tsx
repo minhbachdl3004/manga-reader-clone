@@ -167,7 +167,7 @@ export const Search = ({ active }: Props) => {
 export const MobileSearch = ({ onChange }: Props) => {
   return (
     <div
-      className="left-auto hidden right-[40px] top-[20px] max-xl:inline-block p-0 text-[#fff] cursor-pointer absolute z-[4] w-[26px] h-[26px] text-center rounded-[3px] font-extrabold"
+      className="left-auto hidden right-[50px] max-md:top-[30px] max-xl:top-[40px] max-lg:inline-block p-0 text-[#fff] cursor-pointer absolute z-[4] w-[26px] h-[26px] text-center rounded-[3px] font-extrabold"
       onClick={onChange}
     >
       <AiOutlineSearch

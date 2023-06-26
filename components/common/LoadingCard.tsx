@@ -7,7 +7,7 @@ const skeletonStyles = "bg-gray-200 dark:bg-gray-700 animate-pulse";
 const LoadingCard = () => {
   return (
     <div
-      className={`w-[427px] h-[228px] relative rounded-[0.75em] float-left mx-[7px] my-[6px] bg-gray-300 dark:bg-gray-500`}
+      className={`w-full h-[228px] relative rounded-[0.75em] float-left mx-[7px] my-[6px] bg-gray-300 dark:bg-gray-500`}
     >
       <div className="p-[1em]">
         <div

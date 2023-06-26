@@ -21,7 +21,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="w-full h-[90px] pt-[20px] mb-[20px]">
+      <div className="w-full h-[90px] max-md:h-[70px] max-md:pt-[10px] max-md:mb-[10px] pt-[20px] mb-[20px]">
         <Navbar />
       </div>
       <HeroSlide mangas={data} />

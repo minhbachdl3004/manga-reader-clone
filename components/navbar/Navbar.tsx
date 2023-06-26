@@ -5,12 +5,13 @@ import Image from "next/image";
 import Menu from "./Menu";
 import { MobileSearch, Search } from "./Search";
 import UserActions from "./UserActions";
+import MobileMenu from "./MobileMenu";
 
 interface Props {
   styles?: string;
 }
 
-const Navbar = ({ styles }: Props) => {
+const Navbar = ({ styles="" }: Props) => {
   const [activeSearchBar, setActiveSearchBar] = useState<boolean>(false);
 
   const handleActiveSearchBar = () => {
@@ -19,12 +20,13 @@ const Navbar = ({ styles }: Props) => {
   return (
     <>
       <div
-        className={`${styles} w-full text-[#ddd] h-full px-[20px] mb-[40px]`}
+        className={`${styles} w-full text-[#ddd] h-full px-[20px] max-md:mb-0 mb-[40px] navbar-container`}
       >
-        <div className="max-w-[1400px] h-full relative">
+        <div className="max-w-[1400px] h-full">
+          <MobileMenu />
           <Link
             href="/"
-            className="block h-[50px] my-[10px] mr-[40px] float-left"
+            className="block h-[50px] my-[10px] mr-[40px] float-left max-md:ml-[40px]"
           >
             <Image
               src="https://mangareader.to/images/logo.png"

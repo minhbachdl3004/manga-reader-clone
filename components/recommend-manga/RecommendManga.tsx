@@ -15,45 +15,46 @@ const RecommendManga = async ({ promise }: PromiseProps) => {
     <div className="mb-[20px] w-full overflow-hidden">
       <div className="px-[20px] max-xl:px-0 max-w-[1400px] w-full mx-auto">
         <section className="mb-[20px] block relative">
-          <Header title="Recommended" />
+          <Header styles="max-xl:px-[10px]" title="Recommended" />
           <div className="relative">
             <Swiper
               modules={[Autoplay]}
               grabCursor={true}
               slidesPerView={"auto"}
               // autoplay={{ delay: 3000 }}
-              className="relative my-0 mx-auto w-full overflow-hidden z-[1]"
+              className="relative my-0 mx-auto w-full overflow-hidden z-[1] max-xl:px-[10px]"
             >
               <>
                 {manga.mangas.map((manga, i) => (
                   <SwiperSlide
                     key={manga._id}
-                    className="w-[206px] max-w-[206px] mr-[15px] flex-shrink-0 h-full relative"
+                    className="w-[206px] max-w-[206px] mr-[15px] flex-shrink-0 h-full relative max-md:mr-[5px] max-lg:w-[200px] max-lg:mr-[5px]"
                   >
-                    <div>
-                      <MangaCard
-                        link={linkManga(manga.name, manga.mangaId)}
-                        name={manga.name}
-                        poster={manga.poster}
-                        score={manga.moreInfo.Score}
-                        totalChapter={manga.totalChapter.toString()}
-                        isDisplay={true}
-                        styles="w-full pb-[148%] relative overflow-hidden bg-[#eee]"
-                      >
-                        <Detail styles="py-[10px] px-0 overflow-hidden">
-                          <Heading2
-                            styles="relative max-w-[206px] leading-[1.4] overflow-hidden font-semibold mb-[0.5rem] text-[#ddd] text-[14px]"
-                            title={manga.name}
-                            link={manga.name.toLowerCase().replaceAll(" ", "-") + `-${manga.mangaId}`}
-                          />
-                          <Genres
-                            styles="block text-ellipsis whitespace-nowrap overflow-hidden"
-                            textColor="text-[#999]"
-                            genres={manga.genres}
-                          />
-                        </Detail>
-                      </MangaCard>
-                    </div>
+                    <MangaCard
+                      link={linkManga(manga.name, manga.mangaId)}
+                      name={manga.name}
+                      poster={manga.poster}
+                      score={manga.moreInfo.Score}
+                      totalChapter={manga.totalChapter.toString()}
+                      isDisplay={true}
+                      styles="w-full pb-[148%] relative overflow-hidden bg-[#eee]"
+                    >
+                      <Detail styles="py-[10px] px-0 overflow-hidden">
+                        <Heading2
+                          styles="relative max-w-[206px] leading-[1.4] overflow-hidden font-semibold mb-[0.5rem] text-[#ddd] text-[14px]"
+                          title={manga.name}
+                          link={
+                            manga.name.toLowerCase().replaceAll(" ", "-") +
+                            `-${manga.mangaId}`
+                          }
+                        />
+                        <Genres
+                          styles="block text-ellipsis whitespace-nowrap overflow-hidden"
+                          textColor="text-[#999]"
+                          genres={manga.genres}
+                        />
+                      </Detail>
+                    </MangaCard>
                   </SwiperSlide>
                 ))}
               </>
