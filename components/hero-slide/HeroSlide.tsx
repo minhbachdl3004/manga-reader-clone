@@ -17,7 +17,7 @@ const buttons = [
 const HeroSlide = ({ mangas }: any) => {
   return (
     <>
-      <div className="bg-[#1f1f1f] text-[#ddd] mt-[-165px] pt-[165px]">
+      <div className="bg-[#1f1f1f] text-[#ddd]">
         <div className="px-[20px] max-xl:px-0 w-full max-w-[1400px] m-auto">
           <div className="bg-[#20152d] max-md:h-[200px] overflow-hidden z-[1] relative block pr-0 w-full pb-[33%]">
             <Swiper

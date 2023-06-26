@@ -1,3 +1,4 @@
+import Navbar from "@/components/navbar/Navbar";
 import "./globals.css";
 
 export const metadata = {
@@ -16,7 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="w-full h-screen bg-[#1f1f1f] relative">
-        <div className="w-full relative mx-auto my-0">{children}</div>
+        <div className="w-full flex flex-col">
+          <div className="w-full h-[90px] pt-[10px] relative bg-[#7b36ce]">
+            <Navbar />
+          </div>
+          <div className="w-full relative mx-auto my-0">{children}</div>
+        </div>
       </body>
     </html>
   );

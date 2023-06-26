@@ -20,7 +20,7 @@ const Navbar = ({ styles="" }: Props) => {
   return (
     <>
       <div
-        className={`${styles} w-full text-[#ddd] h-full px-[20px] max-md:mb-0 mb-[40px] navbar-container`}
+        className={`${styles} w-full max-md:pt-0 text-[#ddd] h-full px-[20px] max-md:mb-0 mb-[40px] navbar-container`}
       >
         <div className="max-w-[1400px] h-full">
           <MobileMenu />
