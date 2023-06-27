@@ -27,7 +27,7 @@ const SearchPage = async ({
 }) => {
   const { sort, q: searchValue } = searchParams as { [key: string]: string };
   const data = await searchManga(searchValue);
-  return <div>
+  return <div className="py-[20px]">
     <MangaScreen mangas={data} newName="" type="Search" searchPage={true} query={searchValue} />
   </div>;
 };

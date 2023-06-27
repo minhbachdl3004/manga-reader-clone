@@ -1,5 +1,6 @@
 import React from "react";
 import { notFound } from "next/navigation";
+import Error from "@/components/common/error";
 import { Metadata } from "next";
 import PageContent from "./ContentPage";
 import { getMangaById } from "app/data/dataFetching";
@@ -26,6 +27,10 @@ export default async function Page({ params }: { params: { name: string } }) {
   let nameArr = params.name.split("-");
   let mangaId = nameArr[nameArr.length - 1];
   const data = await getMangaById(mangaId);
+
+  if (!data) {
+    return <Error />;
+  }
 
   return (
     <div className="max-w-[1400px] w-full overflow-hidden bg-[#1f1f1f]">

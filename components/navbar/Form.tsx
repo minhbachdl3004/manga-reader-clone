@@ -35,11 +35,11 @@ const Form = ({
       id="authentication-modal"
       tabIndex={-1}
       aria-hidden="true"
-      className={`fixed top-0 left-0 right-0 z-[9999] w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full bg-blur opacity-100 transition-fade ${
+      className={`fixed top-0 left-0 right-0 z-[9999] w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full ${
         open ? "" : "hidden"
       }`}
     >
-      <div className="fixed inset-0 bg-blur bg-opacity-75 transition-opacity" onClick={handleChange}></div>
+      <div className="fixed inset-0 h-screen bg-blur bg-opacity-100 transition-opacity" onClick={handleChange}></div>
       <div className="w-full h-full flex justify-center items-center">
         <div
           className={`relative w-full max-w-[500px] max-h-[calc(100%-3.5rem)] ${poppins.className}`}

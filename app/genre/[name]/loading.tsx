@@ -5,7 +5,7 @@ import React from "react";
 const arr = [1, 2, 3, 4, 5, 6, 7, 8];
 const Loading = () => {
   return (
-    <div>
+    <div className="py-[20px]">
       <div className="flex max-xl:flex-col max-md:px-0 gap-[14px] max-w-[1400px] px-[20px] pb-[50px]">
         <div className="w-full max-md:w-full max-md:px-[10px]">
           <div className="w-[150px] h-[22px] animate-pulse rounded-full bg-gray-300 dark:bg-gray-500 mb-[20px]"></div>

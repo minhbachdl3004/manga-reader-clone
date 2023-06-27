@@ -90,7 +90,7 @@ const Header = ({
           showChapterList ? "block" : "hidden"
         }`}
       >
-        <div className="grid grid-cols-4 max-md:grid-cols-3 gap-[5px] px-[5px]">
+        <div className="grid grid-cols-4 max-md:grid-cols-3 max-sm:grid-cols-2 gap-[5px] px-[5px]">
           {chapters &&
             chapters.map((chapter: any, i: number) => (
               <Link

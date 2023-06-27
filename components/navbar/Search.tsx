@@ -12,37 +12,25 @@ import useSWR from "swr";
 import Image from "next/image";
 import { axiosInstance } from "configs/axiosConfig";
 import { linkManga } from "app/data/dataFetching";
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
+import { IconBase, IconContext } from "react-icons";
 
 interface Props {
   active?: boolean;
   onChange?: (e: any) => void;
 }
 
-interface dataProps {
-  mangas: mangaProps;
-  isLoading: any;
-  isError: any;
-}
-
-const GetMangasByKeyword = (keyword: string) => {
-  const { data, error, isLoading } = useSWR(
-    `manga/name/search?name=${keyword}&page=1`,
-    fetcher
-  );
-
-  return {
-    mangas: data,
-    isLoading,
-    isError: error,
-  };
-};
 
 export const Search = ({ active }: Props) => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [loading, setLoading] = useState<boolean>(false);
-  const [mangaData, setMangaData] = useState<mangaProps>();
+  const [mangaData, setMangaData] = useState<mangaProps>({
+    mangas: [],
+    pagination: {},
+  });
   const [inputValue, setInputValue] = useState<string>("");
+  const [query, setQuery] = useState<any>();
   const [isFocus, setIsFocus] = useState<boolean>(false);
   console.log(isFocus);
 
@@ -62,7 +50,7 @@ export const Search = ({ active }: Props) => {
         } else {
           setMangaData({
             mangas: [],
-          })
+          });
         }
       } catch (error) {
         console.log(error);
@@ -78,8 +66,10 @@ export const Search = ({ active }: Props) => {
 
     if (inputValue) {
       newParams.set("q", inputValue);
+      setQuery(newParams);
     } else {
       newParams.delete("q");
+      setQuery("");
     }
 
     router.push(createUrl("/search", newParams));
@@ -103,6 +93,7 @@ export const Search = ({ active }: Props) => {
             className={`relative w-full h-[40px] text-[#111] pr-[40px] pl-[60px] text-[13px] font-normal bg-[#fff] rounded-[8px] border-none shadow-input outline-none ${poppins.className} }`}
             placeholder="Search manga..."
             defaultValue={searchParams?.get("q") || ""}
+            value={inputValue}
             onChange={handleSearch}
             onFocus={() => setIsFocus(!isFocus)}
           />
@@ -125,7 +116,7 @@ export const Search = ({ active }: Props) => {
               <div className="dot-pulse"></div>
             </div>
           ) : (
-            <div className="flex flex-col w-full max-h-[400px]">
+            <div className="flex flex-col w-full max-h-[500px]">
               {mangaData &&
                 mangaData.mangas.slice(0, 4).map((manga) => (
                   <Link
@@ -156,6 +147,19 @@ export const Search = ({ active }: Props) => {
                     </div>
                   </Link>
                 ))}
+              {mangaData?.mangas.length > 0 ? (
+                <div
+                  className="w-full flex justify-center items-center p-[15px] bg-[#5f25a6] font-medium text-[#fff] text-center cursor-pointer"
+                  onClick={() => {
+                    setInputValue("")
+                    router.push(`/search?q=${inputValue}`)}}
+                >
+                  <h3>View All Results</h3>
+                  <IconContext.Provider value={{}}>
+                    <MdOutlineKeyboardArrowRight className="inline-block h-[20px] w-[20px]" />
+                  </IconContext.Provider>
+                </div>
+              ) : null}
             </div>
           )}
         </div>

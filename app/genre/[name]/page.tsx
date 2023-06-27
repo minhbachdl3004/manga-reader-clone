@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import Error from "./error";
+import Error from "@/components/common/error";
 import MangaScreen from "@/components/MangaScreen";
-import { notFound } from "next/navigation";
 import { apiUrl } from "utils/urlConfig";
-import Loading from "./loading";
 
 
 export async function generateMetadata({
@@ -48,8 +46,8 @@ export default async function Page({ params }: { params: { name: string } }) {
   }
 
   return (
-    <>
+    <div className="py-[20px]">
       <MangaScreen mangas={data} newName={newname} type="Genre" searchPage={false} />
-    </>
+    </div>
   );
 }

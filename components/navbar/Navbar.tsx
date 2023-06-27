@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import Menu from "./Menu";
+import Menu, { poppins } from "./Menu";
 import { MobileSearch, Search } from "./Search";
 import UserActions from "./UserActions";
 import MobileMenu from "./MobileMenu";
@@ -20,7 +20,7 @@ const Navbar = ({ styles="" }: Props) => {
   return (
     <>
       <div
-        className={`${styles} w-full max-md:pt-0 text-[#ddd] h-full px-[20px] max-md:mb-0 mb-[40px] navbar-container`}
+        className={`${styles} w-full max-md:pt-0 text-[#ddd] h-full px-[20px] max-md:mb-0 mb-[40px] navbar-container ${poppins.className}`}
       >
         <div className="max-w-[1400px] h-full">
           <MobileMenu />

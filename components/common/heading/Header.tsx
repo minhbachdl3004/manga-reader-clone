@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Link from "next/link";
+import { poppins } from "@/components/navbar/Menu";
 
 interface Props {
   link?: string;
@@ -11,7 +12,7 @@ interface Props {
 
 export const Header = ({ styles, title }: Props) => {
   return (
-    <div className={`${styles} mb-[15px] block w-full`}>
+    <div className={`${styles} mb-[15px] block w-full ${poppins.className}`}>
       <div className="">
         <h2 className="text-[#fff] text-[24px] leading-[40px] font-semibold p-0 m-0">
           {title}

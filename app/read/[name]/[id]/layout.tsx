@@ -6,14 +6,14 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({
+export default function Layout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="w-full relative mx-auto my-0 flex justify-center items-center">
+    <body className="w-full relative mx-auto my-0 flex justify-center items-center">
       {children}
-    </div>
+    </body>
   );
 }

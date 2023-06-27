@@ -1,5 +1,4 @@
 "use client"; // Error components must be Client Components
-
 import { poppins } from "@/components/navbar/Menu";
 import Image from "next/image";
 import { MdKeyboardArrowLeft } from "react-icons/md";
