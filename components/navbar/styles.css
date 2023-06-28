@@ -123,7 +123,22 @@
   color: #ddd;
 }
 
-@media screen and (max-width: 1024px) {
+.mobile-search {
+  position: absolute;
+  right: 50px;
+  padding: 0;
+  color: #fff;
+  cursor: pointer;
+  z-index: 4;
+  width: 26px;
+  height: 26px;
+  text-align: center;
+  border-radius: 3px;
+  font-weight: 800;
+  display: none;
+}
+
+@media screen and (max-width: 1038px) {
   .search-bar {
     position: absolute;
     background-color: #7b36ce;
@@ -135,6 +150,14 @@
     width: 100%;
     padding: 20px 20px 10px;
     display: none;
+  }
+
+  .filter {
+    display: none;
+  }
+  .mobile-search {
+    display: inline-block;
+    top: 33px;
   }
 }
 

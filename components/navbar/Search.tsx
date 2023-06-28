@@ -6,9 +6,7 @@ import { poppins } from "./Menu";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createUrl } from "utils/createUrl";
 import "./styles.css";
-import fetcher from "configs/fetcherConfig";
 import { mangaProps } from "utils/type";
-import useSWR from "swr";
 import Image from "next/image";
 import { axiosInstance } from "configs/axiosConfig";
 import { linkManga } from "app/data/dataFetching";
@@ -30,7 +28,6 @@ export const Search = ({ active }: Props) => {
     pagination: {},
   });
   const [inputValue, setInputValue] = useState<string>("");
-  const [query, setQuery] = useState<any>();
   const [isFocus, setIsFocus] = useState<boolean>(false);
   console.log(isFocus);
 
@@ -66,13 +63,11 @@ export const Search = ({ active }: Props) => {
 
     if (inputValue) {
       newParams.set("q", inputValue);
-      setQuery(newParams);
     } else {
       newParams.delete("q");
-      setQuery("");
     }
-
     router.push(createUrl("/search", newParams));
+    setInputValue("")
   };
   return (
     <div className={`search-bar ${active ? "active-search" : ""}`}>
@@ -84,7 +79,7 @@ export const Search = ({ active }: Props) => {
         >
           <Link
             href="/filter"
-            className="h-[26px] cursor-pointer leading-[26px] text-[11px] bg-[#e9daff] text-[#5f25a6] px-[6px] rounded-[6px] absolute left-[7px] top-[7px] z-3 hover:bg-[#5f25a6] hover:text-[#fff]"
+            className="h-[26px] cursor-pointer leading-[26px] text-[11px] bg-[#e9daff] text-[#5f25a6] px-[6px] rounded-[6px] absolute left-[7px] top-[7px] z-3 hover:bg-[#5f25a6] hover:text-[#fff] filter"
           >
             FILTER
           </Link>
@@ -171,7 +166,7 @@ export const Search = ({ active }: Props) => {
 export const MobileSearch = ({ onChange }: Props) => {
   return (
     <div
-      className="left-auto hidden right-[50px] max-md:top-[30px] max-xl:top-[40px] max-lg:inline-block p-0 text-[#fff] cursor-pointer absolute z-[4] w-[26px] h-[26px] text-center rounded-[3px] font-extrabold"
+      className="mobile-search"
       onClick={onChange}
     >
       <AiOutlineSearch
