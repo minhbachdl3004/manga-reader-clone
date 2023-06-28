@@ -164,3 +164,35 @@
 .active-search {
   display: block;
 }
+
+
+.sidebar_menu {
+  position: fixed;
+  z-index: 101;
+  left: -260px;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 260px;
+  padding: 0;
+  background: #fff;
+  transition: all 0.2s ease 0s;
+}
+
+.sidebar_menu.active {
+  opacity: 1;
+  left: 0;
+  background-color: #2f2f2f;
+  z-index: 1004;
+}
+
+@media screen and (max-width: 1399px) {
+  .sidebar_menu {
+    z-index: 103;
+  }
+}
+
+.border-bot {
+  border-bottom: 1px solid #3f3f3f;
+}
