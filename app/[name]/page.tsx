@@ -4,7 +4,7 @@ import Error from "@/components/common/error";
 import { Metadata } from "next";
 import PageContent from "./ContentPage";
 import { getMangaById } from "app/data/dataFetching";
-
+import Navbar from "@/components/navbar/Navbar";
 
 export async function generateMetadata({
   params,
@@ -34,7 +34,12 @@ export default async function Page({ params }: { params: { name: string } }) {
 
   return (
     <div className="max-w-[1400px] w-full overflow-hidden bg-[#1f1f1f]">
-      <PageContent manga={data.manga} />
+      <div className="flex flex-col">
+        <div className="w-full h-[90px] pt-[10px] relative bg-[#7b36ce]">
+          <Navbar />
+        </div>
+        <PageContent manga={data.manga} />
+      </div>
     </div>
   );
 }

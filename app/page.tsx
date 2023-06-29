@@ -20,27 +20,32 @@ export default async function Home() {
   const recommendMangaData = await recommendManga;
 
   return (
-    <>
-      <HeroSlide mangas={data} />
-      <Suspense fallback={<Loading />}>
-        <MangaTrending promise={trendingManga} />
-      </Suspense>
-      <div className="px-[20px]">
-        <Category />
+    <div className="flex flex-col">
+      <div className="w-full h-[90px] pt-[10px] relative bg-[#7b36ce]">
+        <Navbar />
       </div>
-      <Suspense fallback={<Loading />}>
-        <RecommendManga promise={recommendManga} />
-      </Suspense>
-      <div className="manga-list__container">
-        <div className="manga-list overflow-hidden max-xl:flex max-xl:flex-col max-xl:gap-0">
-          <Suspense>
-            <LatestUpdate promise={latestManga} />
-          </Suspense>
-          <Suspense>
-            <MangaRanking mangas={recommendMangaData} />
-          </Suspense>
+      <div>
+        <HeroSlide mangas={data} />
+        <Suspense fallback={<Loading />}>
+          <MangaTrending promise={trendingManga} />
+        </Suspense>
+        <div className="px-[20px]">
+          <Category />
+        </div>
+        <Suspense fallback={<Loading />}>
+          <RecommendManga promise={recommendManga} />
+        </Suspense>
+        <div className="manga-list__container">
+          <div className="manga-list overflow-hidden max-xl:flex max-xl:flex-col max-xl:gap-0">
+            <Suspense>
+              <LatestUpdate promise={latestManga} />
+            </Suspense>
+            <Suspense>
+              <MangaRanking mangas={recommendMangaData} />
+            </Suspense>
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

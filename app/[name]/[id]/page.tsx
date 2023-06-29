@@ -2,7 +2,10 @@ import React from "react";
 import { apiUrl } from "utils/urlConfig";
 import { MangaProps, chapterProps, specificMangaProps } from "utils/type";
 import Image from "next/image";
-import { getMangaById, linkManga } from "app/data/dataFetching";
+import {
+  getMangaChapterByMangaIdAndChapterId,
+  linkManga,
+} from "app/data/dataFetching";
 import Header from "./Header";
 
 export default async function Page({
@@ -12,23 +15,25 @@ export default async function Page({
 }) {
   const nameArr = params.name.split("-");
   const mangaId = nameArr[nameArr.length - 1];
-  const chapterId = params.id.replace("-", " ");
-  const currentChapter = "Chapter " + chapterId.split(" ")[1];
-  const { manga }: specificMangaProps = await getMangaById(mangaId);
+  const chapterId = params.id;
+  const { manga, previousChapter , nextChapter }: specificMangaProps =
+    await getMangaChapterByMangaIdAndChapterId(mangaId, chapterId);
   const chapter: chapterProps[] = manga.chapters.filter(
-    (chapter: chapterProps) => chapter.chapterId.toLowerCase() === chapterId
+    (chapter: chapterProps) => chapter._id.toLowerCase() === chapterId
   );
 
   return (
     <div className="max-w-[1400px] w-full overflow-auto flex flex-col bg-[#141414]">
       <Header
-        currentChapterId={chapter[0]._id}
         name={manga.name}
+        previousChapterLink={previousChapter !== null ? previousChapter._id : ""}
+        nextChapterLink={nextChapter !== null ? nextChapter._id : ""}
         link={linkManga(manga.name, manga.mangaId)}
         chapters={manga.chapters}
-        currentChapter={currentChapter}
+        currentChapterId={chapter[0]._id}
+        currentChapter={chapter[0].chapterName}
       />
-      <div className="pt-[100px] max-w-[1400px] w-full px-[20px] flex justify-center items-center">
+      <div className="pt-[100px] max-w-[1400px] w-full px-[20px] overflow-hidden flex justify-center items-center">
         <div className="flex flex-col" style={{ transformOrigin: "top" }}>
           {!chapter
             ? null

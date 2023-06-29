@@ -7,6 +7,8 @@ import { poppins } from "@/components/navbar/Menu";
 import { IoIosArrowDown } from "react-icons/io";
 import { ImArrowRight2, ImArrowLeft2 } from "react-icons/im";
 import { IconContext } from "react-icons";
+import { chapterProps } from "utils/type";
+import { useRouter } from "next/navigation";
 
 interface Props {
   link: string;
@@ -14,17 +16,20 @@ interface Props {
   currentChapter: string;
   chapters: any;
   currentChapterId: string;
+  previousChapterLink: string | undefined;
+  nextChapterLink: string | undefined;
 }
-const buttonStyles =
-  "float-left leading-[30px] relative mr-[5px] bg-[#333] py-[5px] px-[10px] max-sm:p-[5px] text-[13px] text-[#fff] font-medium rounded-[4px] max-sm:text-[12px] max-sm:px-[15px]";
 
 const Header = ({
-  currentChapterId,
   link,
   name,
   chapters,
+  currentChapterId,
   currentChapter,
+  previousChapterLink,
+  nextChapterLink,
 }: Props) => {
+  const router = useRouter();
   const [isNavbarVisible, setIsNavbarVisible] = useState(true);
   const [showChapterList, setShowChapterList] = useState<boolean>(false);
 
@@ -41,40 +46,46 @@ const Header = ({
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navigateNextChapter = () => {
+    nextChapterLink ? router.push(`${link}/${nextChapterLink}`) : "";
+  };
+
+  const navigatePrevChapter = () => {
+    previousChapterLink ? router.push(`${link}/${previousChapterLink}`) : "";
+  };
+
   return (
     <div
       className={`w-full ${
         isNavbarVisible ? "fixed" : "absolute"
       } h-[70px] bg-[#222] z-[999] px-[20px] ${poppins.className}`}
     >
-      <Link href="/" className="block h-[50px] my-[10px] mr-[40px] float-left">
+      <Link
+        href="/"
+        className="block h-[50px] my-[10px] mr-[40px] float-left max-md:w-[50px] max-md:overflow-hidden max-md:mr-0"
+      >
         <Image
           src="https://mangareader.to/images/logo.png"
           alt=""
           width={160}
           height={50}
-          className="h-full w-auto float-left"
+          className="max-md:absolute max-md:h-[50px] h-full w-auto float-left"
         />
       </Link>
       <div className="hr-line max-lg:hidden"></div>
       <Link
-        href={link}
+        href={link ? link : "/"}
         className="float-left h-[70px] w-[200px] relative hr-manga max-lg:hidden"
       >
         <h2 className="manga-name">{name}</h2>
       </Link>
       <div className="hr-navigation px-[50px] overflow-hidden max-md:absolute max-md:left-[80px] max-md:right-[120px] max-md:bg-[#222] max-md:w-full max-md:text-left max-sm:px-[20px]">
-        <div className={`${buttonStyles}`}>Reading</div>
-        <div className={`${buttonStyles} max-sm:px-[10px]`}>
-          <span className="max-sm:hidden">Language: </span>
-          EN
-        </div>
         <div
           className={`${
             showChapterList
               ? "bg-[#ffd702] text-[#111]"
               : "bg-[#333] text-[#fff]"
-          } float-left leading-[30px] relative mr-[5px] py-[5px] px-[10px] flex justify-center items-center text-[13px] font-medium rounded-[4px] gap-[5px] max-sm:text-[12px]"
+          } float-left leading-[30px] relative mr-[5px] py-[5px] px-[10px] flex justify-center items-center text-[13px] font-medium rounded-[4px] gap-[5px] max-sm:text-[12px]
           `}
           role="button"
           onClick={() => setShowChapterList(!showChapterList)}
@@ -84,9 +95,29 @@ const Header = ({
             <IoIosArrowDown className="pb-[3px] font-bold text-[18px]" />
           </IconContext.Provider>
         </div>
+        <div
+          className={`bg-[#333] py-[11px] px-[10px] cursor-pointer rounded-[4px] mr-[5px] max-sm:px-[10px]`}
+          onClick={navigatePrevChapter}
+        >
+          <IconContext.Provider value={{}}>
+            <ImArrowLeft2 className="pb-[3px] font-bold text-[18px] hover:text-[#ffd702]" />
+          </IconContext.Provider>
+        </div>
+        <div
+          className={`bg-[#333] py-[11px] px-[10px] mr-[5px] cursor-pointer rounded-[4px] max-sm:px-[10px]`}
+          onClick={navigateNextChapter}
+        >
+          <IconContext.Provider value={{}}>
+            <ImArrowRight2 className="pb-[3px] font-bold text-[18px]  hover:text-[#ffd702]" />
+          </IconContext.Provider>
+        </div>
       </div>
       <div
-        className={`dropdown-menu dropdown-menu-model dropdown-menu-fixed overflow-auto pb-[10px] ${
+        className="fixed top-[70px] inset-0 h-screen bg-opacity-100 transition-opacity"
+        onClick={() => setShowChapterList(false)}
+      ></div>
+      <div
+        className={`dropdown-menu dropdown-menu-model dropdown-menu-fixed overflow-auto pb-[10px] z-[9999] ${
           showChapterList ? "block" : "hidden"
         }`}
       >
@@ -94,9 +125,7 @@ const Header = ({
           {chapters &&
             chapters.map((chapter: any, i: number) => (
               <Link
-                href={`/read${link}/${chapter.chapterId
-                  .toLowerCase()
-                  .replace(" ", "-")}`}
+                href={`${link}/${chapter._id.toLowerCase().replace(" ", "-")}`}
                 key={i}
                 className="relative overflow-hidden"
               >

@@ -179,12 +179,11 @@ const PageContent = ({ manga }: Props) => {
                   onMouseOver={() => setIsHoverChapter(true)}
                 >
                   <Link
-                    href={`/read/${
+                    href={`/${
                       manga.name
                         .toLowerCase()
                         .replace(/\s/g, "-")
-                        .replace(/[^a-zA-Z0-9-]/g, "") + `-${manga.mangaId}`
-                    }/${chapter.chapterId.toLowerCase().replace(" ", "-")}`}
+                        .replace(/[^a-zA-Z0-9-]/g, "") + `-${manga.mangaId}`}/${chapter._id}`}
                     className={`bg-[#2f2f2f] text-[#ddd] px-[15px] py-[10px] relative flex justify-between ${
                       highlightedChapter === chapter.chapterId.split(" ")[1]
                         ? "chapter-highlight" : isHoverChapter ? "hover:text-[#c49bff]"

@@ -18,7 +18,19 @@ export interface mangaProps {
 }
 
 export interface specificMangaProps {
-  manga: MangaProps
+  manga: MangaProps,
+  previousChapter: {
+    _id?: string;
+    chapterId?: string;
+    chapterName?: string;
+    images?: string[]
+  },
+  nextChapter: {
+    _id?: string;
+    chapterId?: string;
+    chapterName?: string;
+    images?: string[]
+  }
 }
 
 export interface PromiseProps {
