@@ -6,12 +6,13 @@ import { AiOutlineFileText } from "react-icons/ai";
 interface Props {
   styles: string;
   chapterNumber: string;
+  chapterLink: string;
 }
 
-const Chapter = ({ chapterNumber, styles }: Props) => {
+const Chapter = ({ chapterLink, chapterNumber, styles }: Props) => {
   return (
     <div className={`${styles}`}>
-      <Link href="/" className="text-[#c49bff]">
+      <Link href={chapterLink ? chapterLink : ""} className="text-[#c49bff]">
         <AiOutlineFileText
           style={{
             display: "inline-block",

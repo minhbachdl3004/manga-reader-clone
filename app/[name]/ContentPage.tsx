@@ -46,7 +46,7 @@ const PageContent = ({ manga }: Props) => {
 
   return (
     <div className={`${poppins.className}`}>
-      <div className={`w-screen bg-[#2f2f2f] px-[20px]`}>
+      <div className={`w-full bg-[#2f2f2f] px-[20px]`}>
         <div className={`py-[60px] relative flex ${poppins.className} max-lg:w-full max-lg:flex-col`}>
           <div
             className="min-w-[180px] h-[270px] relative rounded-[10px] mr-[30px] max-lg:relative max-lg:top-auto max-lg:left-auto max-lg:right-auto max-lg:z-[9] max-lg:mx-auto max-lg:mb-[15px] max-xl:w-[140px]"
@@ -61,7 +61,7 @@ const PageContent = ({ manga }: Props) => {
           </div>
           <div className="flex w-full min-h-[300px] pt-[5px] max-lg:text-center max-lg:flex-col max-lg:items-center">
             <div className="flex flex-col gap-[15px] w-[70%] max-lg:w-full mr-[20px] max-lg:mr-0">
-              <h3 className="overflow-hidden text-ellipsis whitespace-nowrap text-[28px] text-[#fff] font-semibold">{manga.name}</h3>
+              <h3 className="text-[28px] text-[#fff] font-semibold max-md:text-[24px]">{manga.name}</h3>
               <Heading1
                 title={manga.otherName}
                 link=""

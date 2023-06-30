@@ -26,8 +26,8 @@ export default async function Page({
     <div className="max-w-[1400px] w-full overflow-auto flex flex-col bg-[#141414]">
       <Header
         name={manga.name}
-        previousChapterLink={previousChapter !== null ? previousChapter._id : ""}
-        nextChapterLink={nextChapter !== null ? nextChapter._id : ""}
+        previousChapterLink={previousChapter ? previousChapter._id : ""}
+        nextChapterLink={nextChapter ? nextChapter._id : ""}
         link={linkManga(manga.name, manga.mangaId)}
         chapters={manga.chapters}
         currentChapterId={chapter[0]._id}
