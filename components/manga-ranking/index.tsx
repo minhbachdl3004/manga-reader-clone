@@ -59,6 +59,7 @@ const MangaRanking = ({ mangas }: any) => {
                         {manga.views} views
                       </span>
                       <Chapter
+                        chapterLink=""
                         chapterNumber={"Chap " + manga.totalChapter.toString()}
                         styles="block mt-[5px]"
                       />
