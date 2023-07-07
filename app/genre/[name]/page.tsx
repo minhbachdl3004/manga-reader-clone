@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Error from "@/components/common/error";
-import MangaScreen from "@/components/MangaScreen";
 import { apiUrl } from "utils/urlConfig";
-
+import MangaPage from "@/components/MangaPage";
 
 export async function generateMetadata({
   params,
@@ -22,9 +21,7 @@ export async function generateMetadata({
 }
 
 async function getMangaByGenre(name: string) {
-  const res = await fetch(
-    `${apiUrl}/manga/genre/${name}?page=1`
-  );
+  const res = await fetch(`${apiUrl}/manga/genre/${name}?page=1`);
   // The return value is *not* serialized
   // You can return Date, Map, Set, etc.
 
@@ -40,14 +37,19 @@ async function getMangaByGenre(name: string) {
 export default async function Page({ params }: { params: { name: string } }) {
   const name = params.name;
   const data = await getMangaByGenre(name);
-  const newname = name.charAt(0).toUpperCase() + name.slice(1);
+  const genreName = name.charAt(0).toUpperCase() + name.slice(1);
   if (!data) {
     return <Error />;
   }
 
   return (
     <div className="py-[20px]">
-      <MangaScreen mangas={data} newName={newname} type="Genre" searchPage={false} />
+      <MangaPage
+        mangas={data}
+        genreName={genreName}
+        type="Genre"
+        searchPage={false}
+      />
     </div>
   );
 }

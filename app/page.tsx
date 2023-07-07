@@ -6,8 +6,9 @@ import Category from "@/components/common/category";
 import RecommendManga from "@/components/recommend-manga/RecommendManga";
 import { getMangas } from "./data/dataFetching";
 import Loading from "@/components/manga-trending/loading";
-import LatestUpdate from "@/components/latest-update/LatestUpdate";
 import MangaRanking from "@/components/manga-ranking";
+import MangaGrid from "@/components/grid/MangaList";
+import { Header } from "@/components/common/heading/Header";
 
 export default async function Home() {
   const posterManga = getMangas("/manga/poster-manga");
@@ -15,9 +16,10 @@ export default async function Home() {
   const trendingManga = getMangas("/manga/trending-manga");
   const latestManga = getMangas("/manga/get-all?page=1");
 
-  //Wait for the Carosel Poster Manga to resolve first
-  const data = await posterManga;
+  //Wait for the Data Fetching to resolve first
+  const posterMangaData = await posterManga;
   const recommendMangaData = await recommendManga;
+  const latestMangaData = await latestManga;
 
   return (
     <div className="flex flex-col">
@@ -25,26 +27,25 @@ export default async function Home() {
         <Navbar />
       </div>
       <div>
-        <HeroSlide mangas={data} />
+        <HeroSlide mangas={posterMangaData} />
         <Suspense fallback={<Loading />}>
           <MangaTrending promise={trendingManga} />
-        </Suspense>
-        <div className="px-[20px]">
-          <Category />
-        </div>
-        <Suspense fallback={<Loading />}>
-          <RecommendManga promise={recommendManga} />
-        </Suspense>
-        <div className="manga-list__container">
-          <div className="manga-list overflow-hidden max-xl:flex max-xl:flex-col max-xl:gap-0">
-            <Suspense>
-              <LatestUpdate promise={latestManga} />
-            </Suspense>
-            <Suspense>
-              <MangaRanking mangas={recommendMangaData} />
-            </Suspense>
+          <div className="px-[20px]">
+            <Category />
           </div>
-        </div>
+          <RecommendManga promise={recommendManga} />
+          <div className="manga-list__container">
+            <div className="manga-list overflow-hidden max-xl:flex max-xl:flex-col max-xl:gap-0">
+              <div className="w-full float-left mb-[40px] max-xl:mb-0 overflow-hidden">
+                <section className="block mb-[40px] relative">
+                  <Header title="Latest Updates" />
+                  <MangaGrid mangas={latestMangaData} />
+                </section>
+              </div>
+              <MangaRanking mangas={recommendMangaData} />
+            </div>
+          </div>
+        </Suspense>
       </div>
     </div>
   );

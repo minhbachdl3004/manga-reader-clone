@@ -7,7 +7,6 @@ import { poppins } from "@/components/navbar/Menu";
 import { IoIosArrowDown } from "react-icons/io";
 import { ImArrowRight2, ImArrowLeft2 } from "react-icons/im";
 import { IconContext } from "react-icons";
-import { chapterProps } from "utils/type";
 import { useRouter } from "next/navigation";
 
 interface Props {

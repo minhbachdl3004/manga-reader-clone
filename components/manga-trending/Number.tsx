@@ -7,7 +7,7 @@ interface Props {
   name: string;
 }
 
-const Number = ({ rank, name }: Props) => {
+const Ranking = ({ rank, name }: Props) => {
   rank.length === 1 ? rank = '0' + rank : rank;
   return (
     <div
@@ -29,4 +29,4 @@ const Number = ({ rank, name }: Props) => {
   );
 };
 
-export default Number;
+export default Ranking;

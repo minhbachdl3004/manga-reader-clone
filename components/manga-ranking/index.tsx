@@ -8,7 +8,7 @@ import { MangaPoster3 } from "@/components/common/MangaPoster";
 import Detail from "@/components/common/detail/Detail";
 import Genres from "@/components/common/genres/Genres";
 import Chapter from "@/components/common/chapter/Chapter";
-import { MangaProps, PromiseProps, mangaProps } from "utils/type";
+import { MangaProps } from "utils/type";
 import { linkManga } from "app/data/dataFetching";
 
 
