@@ -57,19 +57,18 @@ const HeroSlide = ({ mangas }: any) => {
                         ></Image>
                       </Link>
                       <div
-                        className={`slide opacity-100 top-[-100px] absolute left-[750px] max-xl:left-[650px] w-[400px] max-xl:w-[350px] pointer-events-auto max-lg:left-[500px] max-md:left-[380px] max-md:w-[300px] max-md:top-[-90px] max-sm:w-[220px] max-sm:left-[250px] ${
+                        className={`slide opacity-100 top-[-100px] absolute right-[100px] max-xl:right-[20px] w-[400px] max-xl:w-[350px] pointer-events-auto max-lg:right-[20px] max-md:right-[-40px] max-md:w-[300px] max-md:top-[-90px] max-sm:w-[250px] max-sm:right-[-10px] ${
                           isActive ? "active" : ""
                         }`}
                       >
                         <Link
                           href={linkManga(manga.name, manga.mangaId)}
-                          className="inline-block w-full pb-[148%] overflow-hidden bg-[#eee] outline-none"
+                          className="inline-block w-full pb-[148%] overflow-hidden bg-[#eee] outline-none border-[20px] max-md:border-[10px] border-solid border-[#fff]"
                           style={{
                             transform: "rotate(15deg)",
                             transition: "all .2s ease 0s",
                             WebkitTransition: "all .2s ease 0s",
                             boxShadow: "0 30px 30px rgba(0, 0, 0, .2)",
-                            border: "20px solid #fff",
                             display: `${isActive ? "" : "none"}`,
                           }}
                         >
@@ -88,14 +87,14 @@ const HeroSlide = ({ mangas }: any) => {
                           ></Image>
                         </Link>
                       </div>
-                      <div className="max-w-[600px] w-full absolute top-[50%] left-[30px] z-[3] text-[#fff] px-[30px] max-xl:px-0 max-sm:mx-[-15px] translate-y-[-50%] pointer-events-auto">
+                      <div className="max-w-[600px] w-full absolute top-[50%] left-[30px] z-[3] text-[#fff] px-[30px] max-xl:px-0 max-sm:mx-[-15px] max-lg:max-w-[460px] max-sm:max-w-[245px] translate-y-[-50%] pointer-events-auto">
                         <div className="text-[18px] leading-[1.3rem] font-semibold mb-[5px] max-lg:hidden">
                           Chapter: {manga.totalChapter} [EN]
                         </div>
-                        <div className="text-[32px] leading-[1.3] font-semibold mb-[15px] overflow-hidden max-lg:text-[20px] max-sm:text-[16px]">
+                        <div className="text-[32px] leading-[1.3] font-semibold mb-[15px] overflow-hidden max-lg:text-[20px] max-sm:text-[18px]">
                           <Link href={linkManga(manga.name, manga.mangaId)}>{manga.name}</Link>
                         </div>
-                        <div className="text-[1em] block font-normal mb-[30px] max-md:hidden max-xl:max-w-[460px]">
+                        <div className="text-[1em] block font-normal mb-[30px] max-sm:hidden max-xl:max-w-[460px]">
                           <div className="mb-[1rem] text-[14px] three-lines">
                             {manga.description}
                           </div>

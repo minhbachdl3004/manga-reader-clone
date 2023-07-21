@@ -151,10 +151,7 @@
     padding: 20px 20px 10px;
     display: none;
   }
-
-  .filter {
-    display: none;
-  }
+  
   .mobile-search {
     display: inline-block;
     top: 33px;
