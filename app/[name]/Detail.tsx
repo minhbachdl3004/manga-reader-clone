@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { Heading1 } from "@/components/common/heading/Header";
 import Link from "next/link";
@@ -12,18 +12,28 @@ import Category from "@/components/common/category";
 import { IconContext } from "react-icons";
 import { AiOutlineSearch } from "react-icons/ai";
 import { FaGlasses } from "react-icons/fa";
+import { useRouter } from 'next/navigation';
 
 interface Props {
   manga: MangaProps;
 }
 
-const PageContent = ({ manga }: Props) => {
+const MangaDetailPage = ({ manga }: Props) => {
+  const router = useRouter();
   const [isHover, setIsHover] = useState<boolean>(false);
   const [isHoverChapter, setIsHoverChapter] = useState<boolean>(false);
   const [inputValue, setInputValue] = useState("");
   const [highlightedChapter, setHighlightedChapter] = useState<string | null>(
     null
   );
+
+  useEffect(() => {
+    const formattedTitle = manga.name
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-");
+    router.push(`/${formattedTitle}-${manga.mangaId}`);
+  }, [manga.mangaId]);
+
   const containerRef = useRef<HTMLDivElement>(null);
 
   function handleInputChange(event: ChangeEvent<HTMLInputElement>) {
@@ -32,22 +42,32 @@ const PageContent = ({ manga }: Props) => {
   }
 
   useEffect(() => {
-      const chapter = containerRef.current?.querySelector<HTMLElement>(`[data-number="${inputValue}"]`);
-      const container = containerRef.current;
-      if (chapter && container) {
-        const offsetTop = chapter.offsetTop;
-        const containerHeight = container.clientHeight;
-        const chapterHeight = chapter.clientHeight;
-        if (offsetTop < container.scrollTop || offsetTop + chapterHeight > container.scrollTop + containerHeight) {
-          container.scrollTo({ top: offsetTop - (containerHeight - chapterHeight) / 2, behavior: 'smooth' });
-        }
+    const chapter = containerRef.current?.querySelector<HTMLElement>(
+      `[data-number="${inputValue}"]`
+    );
+    const container = containerRef.current;
+    if (chapter && container) {
+      const offsetTop = chapter.offsetTop;
+      const containerHeight = container.clientHeight;
+      const chapterHeight = chapter.clientHeight;
+      if (
+        offsetTop < container.scrollTop ||
+        offsetTop + chapterHeight > container.scrollTop + containerHeight
+      ) {
+        container.scrollTo({
+          top: offsetTop - (containerHeight - chapterHeight) / 2,
+          behavior: "smooth",
+        });
       }
+    }
   }, [inputValue]);
 
   return (
     <div className={`${poppins.className}`}>
       <div className={`w-full bg-[#2f2f2f] px-[20px]`}>
-        <div className={`py-[60px] relative flex ${poppins.className} max-lg:w-full max-lg:flex-col`}>
+        <div
+          className={`py-[60px] relative flex ${poppins.className} max-lg:w-full max-lg:flex-col`}
+        >
           <div
             className="min-w-[180px] h-[270px] relative rounded-[10px] mr-[30px] max-lg:relative max-lg:top-auto max-lg:left-auto max-lg:right-auto max-lg:z-[9] max-lg:mx-auto max-lg:mb-[15px] max-xl:w-[140px]"
             style={{ border: "3px solid #fff" }}
@@ -61,7 +81,9 @@ const PageContent = ({ manga }: Props) => {
           </div>
           <div className="flex w-full min-h-[300px] pt-[5px] max-lg:text-center max-lg:flex-col max-lg:items-center">
             <div className="flex flex-col gap-[15px] w-[70%] max-lg:w-full mr-[20px] max-lg:mr-0">
-              <h3 className="text-[28px] text-[#fff] font-semibold max-md:text-[24px]">{manga.name}</h3>
+              <h3 className="text-[28px] text-[#fff] font-semibold max-md:text-[24px]">
+                {manga.name}
+              </h3>
               <Heading1
                 title={manga.otherName}
                 link=""
@@ -98,7 +120,12 @@ const PageContent = ({ manga }: Props) => {
                   </IconContext.Provider>
                 </Link>
               </div>
-              <Genres genres={manga.genres} type={1} styles="float-left" textColor="" />
+              <Genres
+                genres={manga.genres}
+                type={1}
+                styles="float-left"
+                textColor=""
+              />
               <div
                 className={`three-lines text-[#fff] text-[13px] max-w-[624px] max-lg:text-left`}
               >
@@ -132,7 +159,7 @@ const PageContent = ({ manga }: Props) => {
             <div className="" style={{ borderBottom: "5px solid #5f25a6" }}>
               <Link
                 href="#list-chapter"
-                className="bg-[#5f25a6] text-[#fff] border-none px-[20px] leading-[45px] font-medium h-full py-[18px] overflow-hidden"
+                className="bg-[#5f25a6] text-[#fff] border-none px-[20px] leading-[45px] font-medium h-full py-[18px] overflow-hidden rounded-[4px]"
               >
                 List Chapter
               </Link>
@@ -183,10 +210,13 @@ const PageContent = ({ manga }: Props) => {
                       manga.name
                         .toLowerCase()
                         .replace(/\s/g, "-")
-                        .replace(/[^a-zA-Z0-9-]/g, "") + `-${manga.mangaId}`}/${chapter._id}`}
+                        .replace(/[^a-zA-Z0-9-]/g, "") + `-${manga.mangaId}`
+                    }/${chapter._id}`}
                     className={`bg-[#2f2f2f] text-[#ddd] px-[15px] py-[10px] relative flex justify-between ${
                       highlightedChapter === chapter.chapterId.split(" ")[1]
-                        ? "chapter-highlight" : isHoverChapter ? "hover:text-[#c49bff]"
+                        ? "chapter-highlight"
+                        : isHoverChapter
+                        ? "hover:text-[#c49bff]"
                         : ""
                     }`}
                   >
@@ -196,7 +226,8 @@ const PageContent = ({ manga }: Props) => {
                     <span
                       className={`bg-[#3f3f3f] px-[10px] text-[#999] text-[13px] rounded-[0.3rem] py-[0.25rem] ${
                         highlightedChapter === chapter.chapterId.split(" ")[1]
-                          ? "bg-[#5f25a6] text-[#fff]" : ""
+                          ? "bg-[#5f25a6] text-[#fff]"
+                          : ""
                       }`}
                     >
                       <IconContext.Provider value={{}}>
@@ -221,4 +252,4 @@ const PageContent = ({ manga }: Props) => {
   );
 };
 
-export default PageContent;
+export default MangaDetailPage;

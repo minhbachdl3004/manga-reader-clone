@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Error from "@/components/common/error";
 import { apiUrl } from "utils/urlConfig";
 import MangaPage from "@/components/MangaPage";
+import Loading from "./loading";
 
 export async function generateMetadata({
   params,

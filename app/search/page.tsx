@@ -1,5 +1,4 @@
 import React from "react";
-import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import { searchManga } from "app/data/dataFetching";
 import MangaPage from "@/components/MangaPage";
