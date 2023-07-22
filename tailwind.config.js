@@ -39,6 +39,7 @@ module.exports = {
       "max-lg": { max: "1024px" },
       "max-md": { max: "860px" },
       "max-sm": { max: "760px" },
+      "max-xsm": {max: "500px"},
     },
   },
   plugins: [],

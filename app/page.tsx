@@ -22,8 +22,8 @@ export default async function Home() {
   const latestMangaData = await latestManga;
 
   return (
-    <div className="flex flex-col gap-[10px]">
-      <div className="w-full h-[90px] pt-[10px] relative bg-[#1f1f1f]">
+    <div className="flex flex-col gap-[10px] max-md:gap-0">
+      <div className="w-full h-[90px] pt-[10px] relative bg-[#1f1f1f] max-md:bg-[#7b36ce]">
         <Navbar />
       </div>
       <div>

@@ -57,7 +57,7 @@ const HeroSlide = ({ mangas }: any) => {
                         ></Image>
                       </Link>
                       <div
-                        className={`slide opacity-100 top-[-100px] absolute right-[100px] max-xl:right-[20px] w-[400px] max-xl:w-[350px] pointer-events-auto max-lg:right-[20px] max-md:right-[-40px] max-md:w-[300px] max-md:top-[-90px] max-sm:w-[250px] max-sm:right-[-10px] ${
+                        className={`slide opacity-100 top-[-100px] absolute right-[100px] max-xl:right-[20px] w-[400px] max-xl:w-[350px] pointer-events-auto max-lg:right-[20px] max-md:right-[-40px] max-md:w-[300px] max-md:top-[-90px] max-sm:w-[250px] max-sm:right-[-30px] max-xsm:w-[220px] max-xsm:right-[-70px] ${
                           isActive ? "active" : ""
                         }`}
                       >
@@ -91,7 +91,7 @@ const HeroSlide = ({ mangas }: any) => {
                         <div className="text-[18px] leading-[1.3rem] font-semibold mb-[5px] max-lg:hidden">
                           Chapter: {manga.totalChapter} [EN]
                         </div>
-                        <div className="text-[32px] leading-[1.3] font-semibold mb-[15px] overflow-hidden max-lg:text-[20px] max-sm:text-[18px]">
+                        <div className="text-[32px] leading-[1.3] font-semibold mb-[15px] overflow-hidden max-lg:text-[20px]">
                           <Link href={linkManga(manga.name, manga.mangaId)}>{manga.name}</Link>
                         </div>
                         <div className="text-[1em] block font-normal mb-[30px] max-sm:hidden max-xl:max-w-[460px]">
@@ -113,15 +113,14 @@ const HeroSlide = ({ mangas }: any) => {
                               ))}
                           </div>
                         </div>
-                        <div className="h-[40px] max-md:h-[35px] flex">
+                        <div className="h-[40px] flex">
                           {buttons.map((button, i) => (
                             <div
                               key={i}
-                              className={`text-[#111] font-medium text-[14px] leading-[40px] px-[20px] max-md:px-[15px] rounded-[4px] text-center h-full mr-[10px] ${button.bgColor} flex justify-center items-center max-md:h-[30px]`}
+                              className={`text-[#111] font-medium text-[14px] leading-[40px] px-[20px] max-md:px-[15px] max-xsm:px-[10px] rounded-[4px] text-center h-full mr-[10px] ${button.bgColor} flex justify-center items-center max-sm:h-[35px]`}
                             >
                               <Link
                                 href={linkManga(manga.name, manga.mangaId)}
-                                className="max-md:text-[12px]"
                               >
                                 {button.title}
                               </Link>
